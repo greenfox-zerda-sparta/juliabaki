@@ -1,0 +1,14 @@
+body {
+  margin-left: 50px
+}
+
+article {
+    max-width: 300px;
+}
+
+p {
+    border-style: none;;
+    border-left: solid 3px black;
+    padding-left: 15px;
+    font-size: 18px;
+}
