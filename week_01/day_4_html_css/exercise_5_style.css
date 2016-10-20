@@ -1,0 +1,29 @@
+body {
+  margin-left: 50px;
+}
+
+h1 {
+  color: blue;
+}
+
+h2 {
+  color: #FFBF00;
+}
+
+ul {
+  color: blue;
+  list-style-type:square;
+}
+
+ol {
+  color: black;
+}
+
+ul>ul {
+  color: black;
+  list-style-type: disc;
+}
+
+ul>ul>li:first-child {
+  color: red;
+}
