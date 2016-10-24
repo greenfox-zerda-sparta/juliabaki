@@ -12,11 +12,13 @@
 using namespace std;
 
 int main() {
-	string m = "Apple";
+	string result = "";
+	string word = "Apple";
+	int times = 4;
 	//fill the m variable with its content 4 times
-	for(int a = 1; a <= 2; a++){
-		m+= m;
+	for(int a = 0; a < times; a++){
+		result += word;
 	}
-	cout << m;
+	cout << result;
 	return 0;
 }
