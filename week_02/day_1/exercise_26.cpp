@@ -17,14 +17,16 @@ int main() {
 	// and for the multiples of five print "Buzz".
 	// For numbers which are multiples of both three and five print "FizzBuzz".
 	int till = 100;
-		for(int i=1; i <= till; i++){
-			if (i%3 == 0){
-				cout << "Fizz" << endl;
-			} else if (i%5 == 0){
-				cout << "Buzz" << endl;
-			} else {
-				cout << i << endl;
-			}
+	for (int i = 1; i <= till; i++) {
+		if (i % 3 == 0) {
+			cout << "Fizz" << endl;
+		} else if (i % 5 == 0) {
+			cout << "Buzz" << endl;
+		} else if (i % 5 == 0 && i % 3 == 0) {
+			cout << "FizzBuzz" << endl;
+		} else {
+			cout << i << endl;
 		}
+	}
 	return 0;
 }
