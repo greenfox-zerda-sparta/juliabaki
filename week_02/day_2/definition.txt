@@ -1,0 +1,38 @@
+﻿deklarálás = kijelölünk egy memóriaterületet
+inicializálás = értéket adunk neki, "használatra késszé tesszük"
+meghívás = konkrétan használom (inkább függvényre)
+
+függvény = (matek) hozzárendelés
+N -> R (természetes -> valós számok)
+(R x R) -> N (számpár -> aminek mind a két tagja a természetes számokból van, és ezen a számpáron végzek műveletet aminek eredménye egy természetes szám lesz
+ |_ ez egy tömb (van benne 2db szám) - paraméterek - mindig számokkal dolgozunk ( a karakterek is számok)
+
+függvény paraméterek: pl bemeneti paraméterek
+	van típusa, érték, hány db van belőle
+	sorrend!- fix a sorrend amiben meg lehet őket adni
+
+return = visszatérés a függvényből, az egész függvényből kilép (mindegy hogy hány van egymásban)
+
+break: kilép a ciklusból és ott folytatja ami a ciklus után van kód
+
+scope: "látótávolság"
+	 az a terület ahol a változó értelmeződik
+
+: : valamilyen névtéren belül értelmezzük az utána lévő változót vagy függvényt
+	kimegyek a legkülső névtérbe aminek nincs neve
+	(pl a 'cout' az std-n belül van deklarálva)
+
+namespace = nevezéktan, névtér
+	std nevű névteret használunk
+
+continue = ~ "boom"
+
+switch = esetek vannak (case), mindig kell break a case-k mögé, 
+	különben lefuttat mindnet ami alatta van
+
+sizeof = megmondja hogy valami hány byte
+	ha típusnévre hívom meg (pl. int)- sizeof(int) megmondja hogy az int hány byte
+	sizeof(b)- megmondja hogy a tömb hány bájt
+	sizeof(b)/sizeof(int)- megmondja hogy a tömb hány elemű
+
+
