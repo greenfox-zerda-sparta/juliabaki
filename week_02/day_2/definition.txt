@@ -35,4 +35,7 @@ sizeof = megmondja hogy valami hány byte
 	sizeof(b)- megmondja hogy a tömb hány bájt
 	sizeof(b)/sizeof(int)- megmondja hogy a tömb hány elemű
 
+recursion = saját magát hívja meg a függvény
+	(pl faktoriális számító függvény)
+
 

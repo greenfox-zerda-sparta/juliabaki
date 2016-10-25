@@ -21,6 +21,16 @@ int factcount(int number) {
 	return factorial;
 }
 
+/* int factcount1(int number){
+	if(number > 1){
+		return number * factcount(number - 1);
+	}
+	else {
+		return 1;
+	}
+}
+*/
+
 int main() {
 	// create a function that returns it's input factorial
 	cout << "Please write a number:" << endl;
@@ -29,6 +39,6 @@ int main() {
 
 	cout << "Factorial:";
 	cout << factcount(number);
-
+	//cout << factcount1(number);
 	return 0;
 }
