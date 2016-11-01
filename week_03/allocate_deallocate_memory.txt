@@ -1,0 +1,177 @@
+Dinamic memory allocation
+
+allocate and deallocate - delete operator
+new - allocate the memory from the heap
+	return an address of memory 
+
+int* pointer;
+pointer = new int; (allocate memory from the heap to strore an int value)
+cout << pointer; // memory address!
+
+*pointer (the value of the variable) = 24;
+cout << *pointer;
+
+delete = keyword of deallocate operator- 
+	have to specify the memory address, which we want to allocate)
+
+delete pointer;
+
+
+///how to allocate arrays dinamicly///
+
+int* pointer = NULL;
+cout << "how many items u are gonna enter";
+int input;
+cin >> input;
+
+pointer = new int[input]; - array to store 'input' many elements
+
+int temp;
+for(int counter = 0; counter < input; counter++){
+  cout << "enter the item" << counter + 1 << endl;
+  cin >> temp;
+  *(pointer+counter) = temp;
+}
+
+cout << "entered items" << endl;
+for(int counter = 0; counter < input; counter++){
+  cout << counter + 1 << " item is" <<  *(pointer+counter) << endl;
+}
+
+delete []pointer;
+
+
+//// avoid dangling pointer ////
+activate 
+settings compilier
+have g++ follow the C++11 ISO c++ language standard
+
+int* pointer = nullptr;
+
+pointer = new int;
+
+if(pointer != nullptr){
+  pointer = 10;
+  cout << *pointer << endl;
+  delete pointer; //dangling pointer if we want to use this deleted pointer (can crash the program)
+  pointer = nullptr; // set again as nullpointer
+} else {
+  cout << "memory not allocated";
+}
+
+///// C++/Game Tutorial 27: new, delete, and delete[] /////
+
+nullpointer = empty pointer
+int* pointer = nullptr; (new keyword C++ 11-ben van csak!)
+
+pointer = new int[10000]; - amikor kitörlés nélkül csak megszûnik a kapcsolat
+	a heapbe rakott memórirész és az õt futtattó függvény között
+	akkor azt hívjuk "leaknek" memóriaszivárgásnak
+	(nem tudjuk többé elérni azt a memory addresset és 
+	nem tudjuk lekérni az azon tárolt infókat, de azok mégis ott foglalják a helyet)
+
+
+delete[] pointer; - felszabadítja a heap-ben lefoglalt részt
+		viszont még mindig van egy pointer-em ami erre mutat
+		(brackets only need for arrays)
+
+ezért visszaállítom nullpointerre
+pointer = nullptr;
+
+//// Pointers and dynamic memory - stack vs heap ////
+
+application's memory 4 parts
+	code -> instructions
+	static/global
+	stack - function call, local variable
+	heap
+stack - meghatározott nagyságú nem lehet rajta változtatni (stack overflow)
+	megvannak a szabályai az allokációnak és a deallokációnak (alulról felfelé építkezik és elõször a legfelsõt törli ki)
+heap - is dynamic memory, nincsenek elõre meghatározott szabályai, meg lehet határozni
+	large free pool of the memory
+
+functions:
+malloc - in c++ new
+	int* p;
+	p = (int*)malloc(sizeof(int)); // 4 bytes, return a pointer- starting address of the block in heap
+	*p = 10;
+
+	mindig csak pointeren keresztül tudjuk elérni a heap memóriáját
+	p = (int*)malloc(20*sizeof(int));
+	p[0] = *p
+	p[1] = *(p+1)
+
+calloc
+realloc
+free - in c++ delete
+	free(p); - clear the heap
+
+operators:
+new
+delete
+
+
+////// Pointers and Dxnamic Memory in C++ (memory management) ///
+
+
+int* p = new int;
+*p = 5; (p értéke 5, ebben az esetben p = memory address!)
+delete p;
+p = new int(10); (10 is the value of the int, 
+		and now p pointing to a new address where stored the value 10
+		= reallocated)
+
+BIG IDEAS
+
+new - allocate space dynamically on the heap (free store)
+	returns the address of the allocated memory
+
+use pointers to reference the memory allocated on the heap
+
+delete - to deallocate memory on the heap
+
+garbage - created when we can no longer access previously allocated memory on the heap
+
+dangling pointer- a pointer that no longer points to something valid on the heap
+
+
+
+///// Memory leak
+
+memory leak = get some memory in the heap, inproper use of dynamic memory, the unused memory is not removed
+heap - don't have a fix size
+
+game code
+int cash = 100; // global variabla
+
+int main(){
+	int bet;
+	while( cash >0
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
