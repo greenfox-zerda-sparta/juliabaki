@@ -1,0 +1,39 @@
+Structures
+
+collecion of different variables
+
+struct keyword - avaible all the functions in the program
+
+struct student{
+  int rollno;
+  char sex;
+}anil,rasmith;
+
+int main(){
+
+student rahul, ajay = {1111, 'm'};
+
+rahul.rollno = 2222;
+anil.rollno = valamimas;
+
+}
+
+dot operator -value
+structur member variable with pointer -> arrow operator
+pointer -> member = 'm';
+
+struct student {
+   int rollno;
+   char sex;
+   int age;
+};
+
+int main () {
+
+return 0;
+}
+
+void display(student s){
+   cout << s.rollno << endl;
+   cout << s.sex << endl;
+}
