@@ -1,4 +1,12 @@
 //============================================================================
+// Name        : new_04.cpp
+// Author      : juliabaki
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+//============================================================================
 // Name        : exercise_04.cpp
 // Author      : juliabaki
 // Version     :
@@ -7,25 +15,27 @@
 //============================================================================
 
 #include <iostream>
+using namespace std;
+
+int length_caunter(int to, int from, int step){
+  int number_of_element;
+  if((to - from) % step == 0){
+      number_of_element = abs((to - from)/step);
+    } else {
+      number_of_element = abs((to - from)/step) + 1;
+    }
+  return number_of_element;
+}
 
 int* range(int from, int to, int step){
-  int number_of_element;
-  if(to - from % step == 0){
-    number_of_element = abs((to - from)/step);
-  } else {
-    number_of_element = abs((to - from)/step) + 1;
-  }
+  int number_of_element = length_caunter(to, from, step);
   int* new_array = new int[number_of_element];
-  for(int i = from; i < to; i + step){
-    for(int j = 0; j < number_of_element-1; j++){
-      new_array[j] = i;
-      cout << new_array[j] << endl;
-    }
+  for(int i = 0; i < number_of_element-1; i++){
+    new_array[i] = from + step * i;
+    cout << new_array[i] << endl;
   }
   return new_array;
 }
-
-using namespace std;
 
 /**
  * Create a function called "range" that creates a new array and returns a pointer to it.
@@ -43,7 +53,8 @@ using namespace std;
  */
 
 int main() {
-  int* new_array = range(1, -8, -3);
+  int* new_array = range(-8, 2, 3);
   delete[]new_array;
+
   return 0;
 }
