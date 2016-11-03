@@ -39,14 +39,11 @@ double get_average_of_gold(Pirate *pirates, int length){
 
 string find_richest_who_has_wooden_leg(Pirate *pirates, int length){
   string richest_pirate_who_has_wooden_leg;
-  int max_gold = pirates[0].gold_count;
+  int max_gold = 0;
   for (int i = 0; i < length; i++){
-    if (pirates[i].gold_count > max_gold){
+    if (pirates[i].gold_count >= max_gold && pirates[i].has_wooden_leg){
       max_gold = pirates[i].gold_count;
-    } else {
-        if(pirates[i].has_wooden_leg == true){
-          richest_pirate_who_has_wooden_leg = pirates[i].name;
-        }
+      richest_pirate_who_has_wooden_leg = pirates[i].name;
     }
   }
   return richest_pirate_who_has_wooden_leg;
@@ -59,7 +56,7 @@ int main() {
     {"Hook", true, 12},
     {"Halloween kid", false, 0},
     {"Sea Wolf", true, 14},
-    {"Morgan", false, 1}
+    {"Morgan", true, 1}
   };
   int length = sizeof(pirates)/sizeof(*pirates);
   cout << get_sum_of_gold(pirates, length) << endl;
