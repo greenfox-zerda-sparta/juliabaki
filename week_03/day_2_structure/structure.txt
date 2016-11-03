@@ -37,3 +37,23 @@ void display(student s){
    cout << s.rollno << endl;
    cout << s.sex << endl;
 }
+
+property: 
+egy darab része a struct-nak
+struct rect{
+	int a;
+	int b;
+}
+
+instance - példája a struct típusú dolognak
+
+rect r; (példája a rect-nek, de példányának hívjuk)
+r.a = 5;
+
+rect r = {1, "alma", 'h'};
+
+constract_rect(&r, 1, 2)- függvénnyel fel tudom tölteni
+
+rect* pointer = &R;
+pointer->a ====== (*ptr)a
+
