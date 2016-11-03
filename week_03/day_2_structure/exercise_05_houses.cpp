@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : exercise_05.cpp
+// Name        : houses.cpp
 // Author      : juliabaki
 // Version     :
 // Copyright   : Your copyright notice
@@ -18,8 +18,27 @@ struct House {
   int area_of_house;
 };
 
-bool decide_house_worth_to_buy (int reference){
+void fillUp (House* my_house){
+  my_house->address_of_house = "Budapest";
+  my_house->price = 20000;
+  my_house->number_of_rooms = 2;
+  my_house->area_of_house = 40;
+}
 
+int get_reference_price(House& my_house, int reference_price_for_one_sqm){
+  return reference_price_for_one_sqm * my_house.area_of_house;
+}
+
+double get_house_price_for_one_sqm(House& my_house){
+  return my_house.price / my_house.area_of_house;
+}
+
+bool decide_house_worth_to_buy (House& my_house){
+  bool worth_it = true;
+  if (get_reference_price(my_house, 400) > get_house_price_for_one_sqm(my_house)){
+    worth_it = false;
+  }
+  return worth_it;
 }
 
 // Create a struck that represents a House
@@ -41,7 +60,13 @@ bool decide_house_worth_to_buy (int reference){
 // but all the other properties are the same.
 
 int main() {
-  House my_house = {"Budapest", 20000, 2, 40};
+  House* my_house = new House[4];
+  fillUp(my_house);
+  cout << decide_house_worth_to_buy(*my_house);
+
+  delete[] my_house;
+  my_house = nullptr;
 
   return 0;
 }
+
