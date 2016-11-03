@@ -34,9 +34,9 @@ double get_house_price_for_one_sqm(House& my_house){
 }
 
 bool decide_house_worth_to_buy (House& my_house){
-  bool worth_it = true;
-  if (get_reference_price(my_house, 400) > get_house_price_for_one_sqm(my_house)){
-    worth_it = false;
+  bool worth_it = false;
+  if (get_reference_price(my_house, 400) >= my_house.price){
+    worth_it = true;
   }
   return worth_it;
 }
