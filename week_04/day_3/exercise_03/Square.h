@@ -19,9 +19,11 @@ class Square: public Shape{
     Square(int input_a, int input_b);
     ~Square();
     string* getName();
-    void setSquare(int input_a, int input_b);
-    int getSquare();
-    double getArea();
+    void setA(int input_a);
+    void setB(int input_b);
+    int getSquare_a();
+    int getSquare_b();
+    void calculateArea();
 
   private:
     int a;

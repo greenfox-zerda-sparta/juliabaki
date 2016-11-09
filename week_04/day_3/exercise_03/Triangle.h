@@ -18,9 +18,11 @@ class Triangle: public Shape{
     Triangle(int input_a, int input_height);
     ~Triangle();
     string* getName();
-    void setTriangle(int input_a, int input_height);
-    int getTriangle();
-    double getArea();
+    void setA(int input_a);
+    void setHeight(int height);
+    int getA();
+    int getHeight();
+    void calculateArea();
 
   private:
     int a;

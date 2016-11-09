@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : exercise_02.cpp
+// Name        : 01.cpp
 // Author      : juliabaki
 // Version     :
 // Copyright   : Your copyright notice
@@ -11,9 +11,7 @@
 
 using namespace std;
 
-
 class Shape {
-
   public:
     virtual string* getName();
     virtual ~Shape();
@@ -23,10 +21,9 @@ string* Shape::getName() {
   return new string("Generic Shape");
 }
 
-Shape::~Shape(){}
+Shape::~Shape(){};
 
 class Triangle: public Shape {
-
   public:
     string* getName();
 };
@@ -36,7 +33,6 @@ string* Triangle::getName() {
 }
 
 class Square: public Shape {
-
   public:
     string* getName();
 };
@@ -45,11 +41,11 @@ string* Square::getName() {
   return new string("Square");
 }
 
-// First, move the previous code to new hpp and cpp files for each class.
-// Include them into this file.
-// Make sure they include each other when needed.
-// Make sure the code below still works.
-
+// Create 2 classes which inherit from the above defined class, Shape
+// One should be Triangle, the other Square.
+// Create their getName function based on the above example.
+// Then watch what the code below does.
+// If You find any typos, etc, correct them.
 
 int main() {
   Shape* shape = new Shape();
@@ -66,5 +62,9 @@ int main() {
   a = triangle;
   cout << "I am a...  " << *a->getName() << endl;
 
-  return 0;
+  delete shape;
+  delete triangle;
+  delete square;
+
+  return  0;
 }

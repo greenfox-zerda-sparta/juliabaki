@@ -8,9 +8,10 @@
 #include "Square.h"
 #include "Shape.h"
 
-Square::Square(int input_a, int input_b) {
-  this->a = input_a;
-  this->b = input_b;
+Square::Square(int a, int b) {
+  this->a = a;
+  this->b = b;
+  calculateArea();
 }
 
 Square::~Square() {}
@@ -19,16 +20,25 @@ string* Square::getName() {
   return new string("Square");
 }
 
-void Square::setSquare(int input_a, int input_b){
+void Square::setA(int input_a){
   this->a = input_a;
+  this->calculateArea();
+}
+
+void Square::setB(int input_b){
   this->b = input_b;
+  this->calculateArea();
 }
 
-int Square::getSquare(){
-  return a, b;
+int Square::getSquare_a(){
+  return a;
 }
 
-double Square::getArea(){
+int Square::getSquare_b(){
+  return b;
+}
+
+void Square::calculateArea(){
   mArea = a * b;
-  return mArea;
 }
+

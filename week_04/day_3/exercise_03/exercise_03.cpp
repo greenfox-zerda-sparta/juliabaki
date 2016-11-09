@@ -28,6 +28,10 @@ using namespace std;
 // Write code into the main function that uses these.
 // Make sure it demonstrates how the class works by printing out the results.
 
+void sayMyName(Shape& shape){
+  cout << "I am a " << *shape.getName() << endl;
+}
+
 int main() {
   Shape* shape = new Shape();
   Triangle* triangle = new Triangle(2, 3);
@@ -39,11 +43,16 @@ int main() {
 
   a = square;
   cout << "I am a...  " << *a->getName() << endl;
-  cout << "This is the area of square: " << a->getArea() << endl;
+  cout << "The area of square: " << a->getArea() << endl;
+  cout << "Get the square one side: " << square->getSquare_a() << endl;
+  cout << "Get the square other side: " << square->getSquare_b() << endl;
+  cout << "The area of square: " << a->getArea() << endl;
 
   a = triangle;
   cout << "I am a...  " << *a->getName() << endl;
-  cout << "This is the area of triangle: " << a->getArea() << endl;
+  cout << "The area of triangle: " << a->getArea() << endl;
+
+  sayMyName(*triangle);
 
   return 0;
 }

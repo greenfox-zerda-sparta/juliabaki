@@ -20,3 +20,5 @@ string* Shape::getName() {
 double Shape::getArea(){
   return mArea;
 }
+
+void Shape::calculateArea(){}

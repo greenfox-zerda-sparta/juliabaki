@@ -19,6 +19,7 @@ class Shape {
     virtual ~Shape();
     virtual string* getName();
     virtual double getArea();
+    virtual void calculateArea();
 
   protected:
     double mArea;

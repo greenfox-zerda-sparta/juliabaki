@@ -11,6 +11,7 @@
 Triangle::Triangle(int input_a, int input_height) {
   this->a = input_a;
   this->height = input_height;
+  calculateArea();
 }
 
 Triangle::~Triangle() {}
@@ -19,16 +20,24 @@ string* Triangle::getName() {
   return new string("Triangle");
 }
 
-void Triangle::setTriangle(int input_a, int input_height){
+void Triangle::setA(int input_a){
   this->a = input_a;
-  this->height = input_height;
+  this->calculateArea();
 }
 
-int Triangle::getTriangle(){
-  return a, height;
+void Triangle::setHeight(int height){
+  this->height = height;
+  this->calculateArea();
 }
 
-double Triangle::getArea(){
+int Triangle::getA(){
+  return a;
+}
+
+int Triangle::getHeight(){
+  return height;
+}
+
+void Triangle::calculateArea(){
   mArea = (a * height) / 2;
-  return mArea;
 }
