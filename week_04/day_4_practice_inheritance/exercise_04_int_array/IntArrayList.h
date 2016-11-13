@@ -13,7 +13,7 @@ using namespace std;
 #ifndef INTARRAYLIST_H_
 #define INTARRAYLIST_H_
 
-class IntArrayList: public IntList{
+class IntArrayList: public IntList {
   public:
     IntArrayList();
     ~IntArrayList();
@@ -22,6 +22,7 @@ class IntArrayList: public IntList{
     void deleteValue(int _a);
     void deleteIndex(int _idx);
     int find(int _a);
+    int getElement(int _idx);
     int getFirst();
     int getLast();
     void printList();

@@ -8,10 +8,7 @@
 #ifndef INTLIST_H_
 #define INTLIST_H_
 
-
 class IntList {
-  private:
-    int mLength;
   public:
     IntList();
     virtual ~IntList();
@@ -20,6 +17,7 @@ class IntList {
     virtual void deleteValue(int _a) = 0;
     virtual void deleteIndex(int _idx) = 0;
     virtual int find(int _a) = 0;
+    virtual int getElement(int _idx) = 0;
     virtual int getFirst() = 0;
     virtual int getLast() = 0;
     virtual void printList() = 0;
@@ -27,6 +25,8 @@ class IntList {
     void incrementLength();
     void decrementLength();
     virtual bool isEmpty() = 0;
+  private:
+    int mLength;
 };
 
 #endif

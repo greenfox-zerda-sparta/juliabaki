@@ -11,16 +11,17 @@ IntList::IntList() {
   this->mLength = 0;
 }
 
-IntList::~IntList() {}
+IntList::~IntList() {
+}
 
-int IntList::getLength(){
+int IntList::getLength() {
   return this->mLength;
 }
 
-void IntList::incrementLength(){
-  mLength++;
+void IntList::incrementLength() {
+  this->mLength++;
 }
 
-void IntList::decrementLength(){
-  mLength--;
+void IntList::decrementLength() {
+  this->mLength--;
 }

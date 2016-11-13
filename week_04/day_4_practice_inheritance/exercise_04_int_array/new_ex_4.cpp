@@ -30,7 +30,7 @@ int main() {
   theList->printList();
   cout << theList->getLength() << endl;
   cout << endl;
-  theList->insert(0, 3);
+  theList->insert(-1, 3);
   theList->printList();
   cout << endl;
   cout << theList->getFirst() << endl;
@@ -38,6 +38,13 @@ int main() {
   cout << endl;
   theList->deleteIndex(1);
   theList->printList();
-  theList->deleteValue(3);
+  theList->deleteValue(6);
   theList->printList();
+
+  for(int i = 0; i < 15; i++){
+    theList->append(rand()%100);
+  }
+  theList->printList();
+
+  return 0;
 }
