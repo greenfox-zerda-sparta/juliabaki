@@ -15,7 +15,11 @@ int main() {
   theList->append(2);
   theList->append(3);
   theList->append(4);
+  theList->printList();
 
+  cout << endl;
+
+  theList->insert(0, 6);
   theList->printList();
 
   return 0;
