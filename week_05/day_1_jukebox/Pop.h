@@ -11,6 +11,7 @@ class Pop: public Song {
 public:
   Pop(string artist_of_song, string title);
   ~Pop();
+  bool addRating(unsigned int rating);
 };
 
 #endif /* POP_H_ */

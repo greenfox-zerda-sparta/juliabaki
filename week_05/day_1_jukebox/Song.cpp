@@ -8,23 +8,18 @@ Song::Song(string artist_of_song, string title) {
   this->rating_counter = 0;
 }
 
-Song::~Song() {
-}
+Song::~Song() {}
 
 string Song::getName() {
   return artist_of_song + ": " + title + " Genre: " + genre;
 }
 
-bool Song::addRating(unsigned int rating) {
-  bool result = false;
-  if (rating >= 1 && rating <= 5) {
-    result = true;
-    this->sum_rating += rating;
-    rating_counter++;
+int Song::getAverageRating() {
+  int averageRating = 0;
+  if(sum_rating == 0 || rating_counter == 0){
+    averageRating = -1;
+  } else {
+      averageRating = sum_rating / rating_counter;
   }
-  return result;
-}
-
-int Song::getAverageRating(){
-  return sum_rating / rating_counter;
+  return averageRating;
 }

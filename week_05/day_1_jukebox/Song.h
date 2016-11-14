@@ -9,7 +9,7 @@ public:
   Song(string artist_of_song, string title);
   virtual ~Song();
   string getName();
-  virtual bool addRating(unsigned int rating);
+  virtual bool addRating(unsigned int rating) = 0;
   int getAverageRating();
 protected:
   string title;
