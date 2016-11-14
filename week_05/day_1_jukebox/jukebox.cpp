@@ -60,3 +60,13 @@ float JukeBox::getGenreRating(string genre){
   float genreRating = sumGenreRating / counter;
   return genreRating;
 }
+
+string JukeBox::getTopRatedSong(){
+  string topRatedSong = songs[0]->title;
+  for(unsigned int i = 0; i < song_counter - 1; i++){
+    if(songs[i]->getAverageRating() < songs[i + 1]->getAverageRating()){
+      topRatedSong = songs[i + 1]->title;
+    }
+  }
+  return topRatedSong;
+}
