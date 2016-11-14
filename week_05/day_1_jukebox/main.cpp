@@ -30,5 +30,7 @@ int main() {
   juke_box.addSong(reggae_song);
   juke_box.getEverySong();
 
+  juke_box.songRate("Nia", "Fire", 4);
+
   return 0;
 }

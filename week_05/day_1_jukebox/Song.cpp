@@ -11,7 +11,7 @@ Song::Song(string artist_of_song, string title) {
 Song::~Song() {}
 
 string Song::getName() {
-  return artist_of_song + ": " + title + " Genre: " + genre;
+  return artist_of_song + ", " + title;
 }
 
 int Song::getAverageRating() {

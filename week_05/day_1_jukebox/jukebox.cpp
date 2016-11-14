@@ -25,3 +25,13 @@ void JukeBox::getEverySong(){
     cout << songs[i]->getName() << std::endl;
   }
 }
+
+void JukeBox::songRate(string artist_of_song, string title, unsigned int rate){
+  for(unsigned int i = 0; i < song_counter; i++){
+    if(artist_of_song == songs[i]->artist_of_song && title == songs[i]->title){
+      songs[i]->addRating(rate);
+      cout << "Average rating of " << songs[i]->getName() << " is: " << songs[i]->getAverageRating();
+    }
+  }
+
+}

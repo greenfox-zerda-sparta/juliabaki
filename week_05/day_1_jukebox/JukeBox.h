@@ -12,6 +12,7 @@ public:
   virtual ~JukeBox();
   void addSong(Song& song);
   void getEverySong();
+  void songRate(string artist_of_song, string title, unsigned int rate);
 private:
   Song** songs;
   unsigned int song_counter;
