@@ -70,3 +70,14 @@ string JukeBox::getTopRatedSong(){
   }
   return topRatedSong;
 }
+
+string JukeBox::getTopRatedGenre(){
+  string TopRatedGenre = "Pop";
+  if(getGenreRating("Pop") < getGenreRating("Rock")){
+    TopRatedGenre = "Rock";
+  }
+  if (getGenreRating(TopRatedGenre) < getGenreRating("Reggae")){
+    TopRatedGenre = "Reggae";
+  }
+  return TopRatedGenre;
+}

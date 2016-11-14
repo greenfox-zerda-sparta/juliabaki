@@ -49,6 +49,8 @@ int main() {
   cout << "Average genre rating of Pop: " << juke_box.getGenreRating("Pop");
   cout << endl;
   cout << "Top rated song: " << juke_box.getTopRatedSong();
+  cout << endl;
+  cout << "Top rated genre: " << juke_box.getTopRatedGenre();
 
   return 0;
 }

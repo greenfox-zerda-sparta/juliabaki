@@ -16,6 +16,7 @@ public:
   float getAverageSongRating(string artist_of_song);
   float getGenreRating(string genre);
   string getTopRatedSong();
+  string getTopRatedGenre();
 private:
   Song** songs;
   unsigned int song_counter;
