@@ -1,27 +1,27 @@
-#include <iostream>
-#include "Pop.h"
-#include "ReggaeSong.h"
-#include "Rock.h"
-using namespace std;
+#include "JukeBox.h"
 
-int main() {
-  Pop pop_song("Nia", "Fire");
-  ReggaeSong reggae_song("Ria", "Soil");
-  Rock rock_song("Sia", "Water");
+JukeBox::JukeBox() {
+  this->songs = nullptr;
+  this->song_counter = 0;
+}
 
-  cout << pop_song.getName() << endl;
-  cout << rock_song.getName() << endl;
-  cout << reggae_song.getName() << endl;
+JukeBox::~JukeBox() {}
 
-  pop_song.addRating(1);
-  cout << "Rating of the pop song: " << pop_song.getAverageRating() << endl;
+void JukeBox::addSong(Song& song) {
+  Song** temp = new Song*[song_counter + 1];
+  if (songs != nullptr) {
+    for (unsigned int i = 0; i < song_counter; ++i) {
+      temp[i] = songs[i];
+    }
+  }
+  temp[song_counter] = &song;
+  delete[] songs;
+  songs = temp;
+  ++song_counter;
+}
 
-  reggae_song.addRating(3);
-  cout << reggae_song.addRating(5) << endl;
-  cout << "Rating of the reggae song: " << reggae_song.getAverageRating() << endl;
-
-  cout << rock_song.addRating(1) << endl;
-  cout << "Rating of the rock song: " << rock_song.getAverageRating() << endl;
-
-  return 0;
+void JukeBox::getEverySong(){
+  for(unsigned int i = 0; i < song_counter; i++){
+    cout << songs[i]->getName() << std::endl;
+  }
 }
