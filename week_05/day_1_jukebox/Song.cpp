@@ -14,8 +14,8 @@ string Song::getName() {
   return artist_of_song + ", " + title;
 }
 
-int Song::getAverageRating() {
-  int averageRating = 0;
+float Song::getAverageRating() {
+  float averageRating = 0;
   if(sum_rating == 0 || rating_counter == 0){
     averageRating = -1;
   } else {

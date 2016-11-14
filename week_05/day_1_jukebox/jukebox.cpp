@@ -35,7 +35,7 @@ void JukeBox::songRate(string artist_of_song, string title, unsigned int rate){
   }
 }
 
-int JukeBox::getAverageSongRating(string artist_of_song){
+float JukeBox::getAverageSongRating(string artist_of_song){
   int sum_averageSongRating = 0;
   int counter = 0;
   for(unsigned int i = 0; i < song_counter; i++){
@@ -44,7 +44,7 @@ int JukeBox::getAverageSongRating(string artist_of_song){
       counter++;
     }
   }
-  int averageSongRating = sum_averageSongRating / counter;
+  float averageSongRating = sum_averageSongRating / counter;
   return averageSongRating;
 }
 

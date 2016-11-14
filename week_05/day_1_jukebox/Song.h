@@ -10,7 +10,7 @@ public:
   virtual ~Song();
   string getName();
   virtual bool addRating(unsigned int rating) = 0;
-  int getAverageRating();
+  float getAverageRating();
   string title;
   string artist_of_song;
   string genre;
