@@ -1,0 +1,126 @@
+#include <fstream>
+
+int main(){
+
+ofstream buckysFile("tuna");
+
+if(buckysFile.isopen()){}
+
+buckysFile << "i love tuna and tuna loves me \n"
+buckysFile.close();
+
+return 0;
+}
+
+////////////////////////////////////////////////
+
+writing costum file
+
+ofstream theFile("players.txt");
+
+cout << "Enters ID, Name, Money" << endl;
+cout << "Ctrl+Z to exit" << endl;
+
+int id;
+string name;
+double money;
+
+while(cin >> id >> name >> money){
+  theFile << id << ' ' << name << ' ' << money << endl;
+}
+
+///////////////////////////////////////////////
+
+reading costum file
+
+ifstream theFile("players.txt");
+
+int id;
+string name;
+double money;
+
+while(theFile >> id >> name >> money){
+  cout << id << ", " << name << ", " << money << endl;
+}
+
+/////////////////////////////////////////////
+
+https://github.com/buckyroberts/Source-Code-from-Tutorials/blob/master/C%2B%2B/70_cppBeginners.cpp
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+ 
+int  getWhatTheyWant();
+void displayItems(int x);
+
+//main function
+int main(){
+	
+	int whatTheyWant;
+	
+	whatTheyWant = getWhatTheyWant();
+	
+	while(whatTheyWant != 4){
+		switch(whatTheyWant){
+			case 1:
+				displayItems(1);
+				break;
+			case 2:
+				displayItems(2);
+				break;
+			case 3:
+				displayItems(3);
+				break;	
+		}
+		
+		whatTheyWant = getWhatTheyWant();
+	}
+}
+
+//getWhatTheyWant function
+int getWhatTheyWant(){
+	 int choice;
+	 
+	 cout << "\n1 - just plain items" <<endl;
+	 cout << "2 - helpful items" <<endl;
+	 cout << "3 - harmful items" <<endl;
+	 cout << "4 - quit program" <<endl;
+	 
+	 cin >> choice;
+	 return choice;
+	 
+}
+
+//display items function
+void displayItems(int x){
+
+	ifstream objectFile("objects.txt");
+	string name;
+	double power;
+	
+	if(x==1){
+		while(objectFile >> name >> power){
+			if(power==0){
+				cout << name << ' ' << power << endl;
+		}
+	}
+}
+	if(x==2){
+		while(objectFile >> name >> power){
+			if(power>0){
+				cout << name << ' ' << power << endl;
+		}
+	}
+}	
+
+	if(x==3){
+		while(objectFile >> name >> power){
+			if(power<0){
+				cout << name << ' ' << power << endl;
+			}
+		}
+	}
+
+}
+
