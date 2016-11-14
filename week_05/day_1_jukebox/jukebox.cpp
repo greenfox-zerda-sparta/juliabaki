@@ -5,7 +5,9 @@ JukeBox::JukeBox() {
   this->song_counter = 0;
 }
 
-JukeBox::~JukeBox() {}
+JukeBox::~JukeBox() {
+  delete[] songs;
+}
 
 void JukeBox::addSong(Song& song) {
   Song** temp = new Song*[song_counter + 1];
@@ -20,64 +22,61 @@ void JukeBox::addSong(Song& song) {
   ++song_counter;
 }
 
-void JukeBox::getEverySong(){
+void JukeBox::printEverySong(){
   for(unsigned int i = 0; i < song_counter; i++){
     cout << songs[i]->getName() << std::endl;
   }
 }
 
-void JukeBox::songRate(string artist_of_song, string title, unsigned int rate){
+void JukeBox::addSongRating(string artist_of_song, string title, unsigned int rating){
   for(unsigned int i = 0; i < song_counter; i++){
     if(artist_of_song == songs[i]->artist_of_song && title == songs[i]->title){
-      songs[i]->addRating(rate);
-      cout << "Average rating of " << songs[i]->getName() << " is: " << songs[i]->getAverageRating();
+      songs[i]->addRating(rating);
     }
   }
 }
 
-float JukeBox::getAverageSongRating(string artist_of_song){
-  int sum_averageSongRating = 0;
+float JukeBox::getAverageArtistRating(string artist_of_song){
+  int sum_artist_rating = 0;
   int counter = 0;
   for(unsigned int i = 0; i < song_counter; i++){
     if(artist_of_song == songs[i]->artist_of_song){
-      sum_averageSongRating += songs[i]->getAverageRating();
+      sum_artist_rating += songs[i]->getAverageRating();
       counter++;
     }
   }
-  float averageSongRating = sum_averageSongRating / counter;
-  return averageSongRating;
+  return sum_artist_rating / counter;
 }
 
 float JukeBox::getGenreRating(string genre){
-  float sumGenreRating = 0;
+  float sum_genre_rating = 0;
   int counter = 0;
   for(unsigned int i = 0; i < song_counter; i++){
     if(genre == songs[i]->genre){
-      sumGenreRating += songs[i]->getAverageRating();
+      sum_genre_rating += songs[i]->getAverageRating();
       counter++;
     }
   }
-  float genreRating = sumGenreRating / counter;
-  return genreRating;
+  return sum_genre_rating / counter;
 }
 
 string JukeBox::getTopRatedSong(){
-  string topRatedSong = songs[0]->title;
-  for(unsigned int i = 0; i < song_counter - 1; i++){
-    if(songs[i]->getAverageRating() < songs[i + 1]->getAverageRating()){
-      topRatedSong = songs[i + 1]->title;
+  int top_rated_song_index = 0;
+  for(unsigned int i = 1; i < song_counter; i++){
+    if(songs[top_rated_song_index]->getAverageRating() < songs[i]->getAverageRating()){
+      top_rated_song_index = i;
     }
   }
-  return topRatedSong;
+  return songs[top_rated_song_index]->title;
 }
 
 string JukeBox::getTopRatedGenre(){
-  string TopRatedGenre = "Pop";
-  if(getGenreRating("Pop") < getGenreRating("Rock")){
-    TopRatedGenre = "Rock";
+  string genres[3] = {"Pop", "Reggae", "Rock"};
+  int top_rated_genre = 0;
+  for(int i = 1; i < 3; i++){
+    if(getGenreRating(genres[i]) > getGenreRating(genres[top_rated_genre])){
+      top_rated_genre = i;
+    }
   }
-  if (getGenreRating(TopRatedGenre) < getGenreRating("Reggae")){
-    TopRatedGenre = "Reggae";
-  }
-  return TopRatedGenre;
+  return genres[top_rated_genre];
 }

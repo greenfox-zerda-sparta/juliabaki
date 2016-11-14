@@ -11,9 +11,9 @@ public:
   JukeBox();
   virtual ~JukeBox();
   void addSong(Song& song);
-  void getEverySong();
-  void songRate(string artist_of_song, string title, unsigned int rate);
-  float getAverageSongRating(string artist_of_song);
+  void printEverySong();
+  void addSongRating(string artist_of_song, string title, unsigned int rate);
+  float getAverageArtistRating(string artist_of_song);
   float getGenreRating(string genre);
   string getTopRatedSong();
   string getTopRatedGenre();

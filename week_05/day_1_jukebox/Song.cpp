@@ -19,7 +19,7 @@ float Song::getAverageRating() {
   if(sum_rating == 0 || rating_counter == 0){
     averageRating = -1;
   } else {
-      averageRating = sum_rating / rating_counter;
+    averageRating = sum_rating / rating_counter;
   }
   return averageRating;
 }
