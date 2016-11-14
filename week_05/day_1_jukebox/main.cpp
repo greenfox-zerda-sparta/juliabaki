@@ -45,6 +45,8 @@ int main() {
   juke_box.addSong(pop_song_4);
   cout << endl;
   cout << "Average song rating of Nia: " << juke_box.getAverageSongRating("Nia");
+  cout << endl;
+  cout << "Average genre rating of Pop: " << juke_box.getGenreRating("Pop");
 
   return 0;
 }

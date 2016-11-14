@@ -47,3 +47,16 @@ int JukeBox::getAverageSongRating(string artist_of_song){
   int averageSongRating = sum_averageSongRating / counter;
   return averageSongRating;
 }
+
+float JukeBox::getGenreRating(string genre){
+  float sumGenreRating = 0;
+  int counter = 0;
+  for(unsigned int i = 0; i < song_counter; i++){
+    if(genre == songs[i]->genre){
+      sumGenreRating += songs[i]->getAverageRating();
+      counter++;
+    }
+  }
+  float genreRating = sumGenreRating / counter;
+  return genreRating;
+}
