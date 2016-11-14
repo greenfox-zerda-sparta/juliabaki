@@ -32,5 +32,19 @@ int main() {
 
   juke_box.songRate("Nia", "Fire", 4);
 
+  Pop pop_song_2("Nia", "Love");
+  Pop pop_song_3("Nia", "Hate");
+  Pop pop_song_4("Nia", "Missing");
+
+  pop_song_2.addRating(3);
+  pop_song_3.addRating(4);
+  pop_song_4.addRating(5);
+
+  juke_box.addSong(pop_song_2);
+  juke_box.addSong(pop_song_3);
+  juke_box.addSong(pop_song_4);
+  cout << endl;
+  cout << "Average song rating of Nia: " << juke_box.getAverageSongRating("Nia");
+
   return 0;
 }

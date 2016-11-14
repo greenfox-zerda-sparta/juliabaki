@@ -13,6 +13,7 @@ public:
   void addSong(Song& song);
   void getEverySong();
   void songRate(string artist_of_song, string title, unsigned int rate);
+  int getAverageSongRating(string artist_of_song);
 private:
   Song** songs;
   unsigned int song_counter;
