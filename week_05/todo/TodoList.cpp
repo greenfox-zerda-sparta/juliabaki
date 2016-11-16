@@ -4,11 +4,7 @@ TodoList::TodoList() {
   this->todo_counter = 0;
 }
 
-TodoList::~TodoList() {
-  ofstream new_todo_list;
-  new_todo_list.open("new_todo_list.txt");
-  new_todo_list.close();
-}
+TodoList::~TodoList() {}
 
 bool TodoList::is_list_empty() {
   ifstream file;

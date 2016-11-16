@@ -21,11 +21,11 @@ int main(int argc, char* argv[]) {
     }
   }
 
-    if ((argc == 3 && argv[1][1] == command_a[1])) {
+  if ((argc == 3 && argv[1][1] == command_a[1])) {
     string new_task = argv[2];
     list.add_new_task(new_task);
     cout << list.print_todos_list();
-    }
+  }
 
   return 0;
 }
