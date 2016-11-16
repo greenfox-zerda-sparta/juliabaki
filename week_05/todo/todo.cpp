@@ -1,27 +1,31 @@
-#include <iostream>
-#include <fstream>
-#include <stdio.h>
-
-using namespace std;
-
-void print_usage();
+#include "TodoList.h"
 
 int main(int argc, char* argv[]) {
+  TodoList list;
 
-  print_usage();
+  char command_l[] = "-l";
+  char command_a[] = "-a";
+  //char command_r[] = "-r";
+  //char command_c[] = "-c";
 
 
-  return 0;
-}
+  if (argc == 1) {
+    cout << list.print_usage();
+  }
 
-void print_usage() {
-  ifstream usage;
-  usage.open("../usage.txt");
-  string content;
-  if (usage.is_open()) {
-    while (getline(usage, content)) {
-      cout << content << endl;
+  if ((argc == 2 && argv[1][1] == command_l[1])) {
+    if (list.is_list_empty()) {
+      cout << endl << "No todos for today :)" << endl;
+    } else {
+      cout << list.print_todos_list();
     }
   }
-  usage.close();
+
+    if ((argc == 3 && argv[1][1] == command_a[1])) {
+    string new_task = argv[2];
+    list.add_new_task(new_task);
+    cout << list.print_todos_list();
+    }
+
+  return 0;
 }
