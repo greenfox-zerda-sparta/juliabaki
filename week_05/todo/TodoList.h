@@ -27,6 +27,7 @@ public:
 
   void task_array_to_file();
   void task_file_to_array();
+  void print_array();
 
   int todo_counter;
 

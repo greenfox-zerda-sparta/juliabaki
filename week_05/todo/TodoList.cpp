@@ -112,7 +112,7 @@ void TodoList::task_array_to_file() {
 void TodoList::remove_task(int index) {
   string temp_line;
   string temp_content;
-  int line_counter = 0;
+  int line_counter = 1;
 
   ifstream in;
   in.open("todo_list.txt");
@@ -130,5 +130,26 @@ void TodoList::remove_task(int index) {
 
     remove("todo_list.txt");
     rename("outfile.txt", "todo_list.txt");
+  }
+}
+
+void TodoList::task_file_to_array() {
+  Task** temp = new Task*[todo_counter];
+  string content;
+  ifstream file("todo_list.txt");
+  int i = 0;
+  while (getline(file, content)) {
+    Task* new_todo_task = new Task(content);
+    temp[i] = new_todo_task;
+    i++;
+  }
+  delete[] todo_tasks;
+  todo_tasks = temp;
+  file.close();
+}
+
+void TodoList::print_array() {
+  for (int i = 0; i < todo_counter; i++) {
+    cout << todo_tasks[i]->content << endl;
   }
 }
