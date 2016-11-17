@@ -14,7 +14,7 @@ TodoList::~TodoList() {
 bool TodoList::is_list_empty() {
   ifstream file;
   string content;
-  int temp_todo_counter;
+  int temp_todo_counter = 0;
   file.open(todo_file);
   while (getline(file, content)) {
     temp_todo_counter++;
@@ -84,43 +84,17 @@ void TodoList::append_new_task(string new_task_content) {
   temp[todo_counter] = new_todo_task;
   delete[] todo_tasks;
   todo_tasks = temp;
+  add_new_task_to_file(new_task_content);
   todo_counter++;
 }
 
 void TodoList::add_new_task_to_file(string new_task_content) {
   ofstream log(todo_file, ios_base::app | ios_base::out);
   log << new_task_content << '\n';
+  log.close();
 }
 
 //http://www.cplusplus.com/reference/fstream/fstream/open/
-
-void TodoList::remove_task(int index) {
-  todo_counter = task_counter();
-  task_file_to_array();
-  if (todo_counter > 0) {
-    Task** temp = new Task*[todo_counter - 1];
-    if (todo_tasks != NULL) {
-      cout << "benne vagyok az ifben" << endl;
-      for (int i = 0; i < index; i++) {
-        temp[i] = todo_tasks[i];
-      }
-      cout << "lemásoltam" << endl;
-      for (int j = index; j < todo_counter; j++) {
-        temp[j] = todo_tasks[j + 1];
-      }
-      cout << "lemásoltam a maradékot" << endl;
-      delete[] todo_tasks;
-      cout << "töröltem" << endl;
-      todo_tasks = temp;
-      todo_counter--;
-      cout << todo_counter << endl;
-      for (int i = 0; i < todo_counter; i++) {
-        cout << todo_tasks[i]->content << endl;
-      }
-      task_array_to_file();
-    }
-  }
-}
 
 void TodoList::task_array_to_file() {
   string content;
@@ -135,12 +109,33 @@ void TodoList::task_array_to_file() {
   file.close();
 }
 
-void TodoList::task_file_to_array() {
-  ifstream file;
-  string content;
-  file.open(todo_file);
-  while (getline(file, content)) {
-    Task* new_todo_task = new Task(content);
+void TodoList::remove_task(int index) {
+  string line = "neee";
+  string temp_line;
+  string temp_content;
+  int line_counter = 0;
+
+  ifstream in;
+  in.open("todo_list.txt");
+
+  if (in.is_open()) {
+    while (getline(in, temp_content)) {
+      if (line_counter == index) {
+        line = temp_content;
+      }
+      line_counter++;
+    }
+
+    ofstream out("outfile.txt");
+    while (getline(in, temp_line)) {
+      if (!(temp_line == line)){
+        out << temp_line << "\n";
+      }
+    }
+    in.close();
+    out.close();
+
+    remove("todo_list.txt");
+    rename("outfile.txt", "todo_list.txt");
   }
-  file.close();
 }

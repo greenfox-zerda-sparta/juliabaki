@@ -35,7 +35,6 @@ int main(int argc, char* argv[]) {
   if ((argc == 3 && argv[1][1] == command_a[1])) {
     string new_task_content = argv[2];
     list.append_new_task(new_task_content);
-    list.add_new_task_to_file(new_task_content);
   }
 
   // .todo -r int
