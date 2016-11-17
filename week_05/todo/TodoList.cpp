@@ -2,16 +2,20 @@
 
 TodoList::TodoList() {
   this->todo_counter = 0;
+  this->todo_tasks = NULL;
+  this->todo_file = "todo_list.txt";
 }
 
-TodoList::~TodoList() {}
+TodoList::~TodoList() {
+  delete[] todo_tasks;
+}
 
 bool TodoList::is_list_empty() {
   ifstream file;
   string content;
   int temp_todo_counter;
-  file.open("../new_todo_list.txt");
-  while(getline(file, content)){
+  file.open(todo_file);
+  while (getline(file, content)) {
     temp_todo_counter++;
   }
   file.close();
@@ -21,26 +25,15 @@ bool TodoList::is_list_empty() {
   return false;
 }
 
-int TodoList::task_counter(){
-  ifstream file;
-  string content;
-  file.open("../new_todo_list.txt");
-  while(getline(file, content)){
-    todo_counter++;
-  }
-  file.close();
-  return todo_counter;
-}
-
 string TodoList::print_todos_list() {
   ifstream todo_list;
-  todo_list.open("../new_todo_list.txt");
+  todo_list.open(todo_file);
   string temp_content;
   string content;
   int task_counter = 1;
   if (todo_list.is_open()) {
     while (getline(todo_list, temp_content)) {
-      content += '\n' + to_string(task_counter) + " - " + temp_content + '\n';
+      content += to_string(task_counter) + " - " + temp_content + '\n';
       task_counter++;
     }
   } else {
@@ -52,7 +45,7 @@ string TodoList::print_todos_list() {
 
 string TodoList::print_usage() {
   ifstream file;
-  file.open("../usage.txt");
+  file.open("usage.txt");
   string temp_content;
   string content;
   if (file.is_open()) {
@@ -67,34 +60,24 @@ string TodoList::print_usage() {
   return content;
 }
 
-void TodoList::add_new_task(string new_task) {
-  todo_counter = task_counter();
-  if (is_list_empty()) {
-    ofstream new_todo_list;
-    new_todo_list.open("../new_todo_list.txt");
-    if (new_todo_list.is_open()) {
-      new_todo_list << new_task;
+void TodoList::append_new_task(string new_task_content) {
+  Task** temp = new Task*[todo_counter + 1];
+  Task* new_todo_task = new Task(new_task_content);
+  if (todo_tasks != NULL) {
+    for (int i = 0; i < todo_counter; i++) {
+      temp[i] = todo_tasks[i];
     }
-    new_todo_list.close();
-  } else {
-    string temp_content;
-    string content;
-    ifstream old_todo_list;
-    old_todo_list.open("../new_todo_list.txt");
-    if (old_todo_list.is_open()) {
-      while(getline(old_todo_list, temp_content)){
-        content += temp_content + '\n';
-      }
-    }
-    old_todo_list.close();
-
-    content += new_task;
-
-    ofstream new_todo_list;
-    new_todo_list.open("../new_todo_list.txt");
-    if (new_todo_list.is_open()) {
-      new_todo_list << content;
-    }
-    new_todo_list.close();
   }
+  temp[todo_counter] = new_todo_task;
+  delete[] todo_tasks;
+  todo_tasks = temp;
+  add_new_task_to_file(new_task_content);
+  todo_counter++;
 }
+
+void TodoList::add_new_task_to_file(string new_task_content){
+  ofstream log(todo_file, ios_base::app | ios_base::out);
+  log << new_task_content << '\n';
+}
+
+//http://www.cplusplus.com/reference/fstream/fstream/open/

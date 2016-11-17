@@ -9,6 +9,7 @@ int main(int argc, char* argv[]) {
   //char command_c[] = "-c";
 
 
+
   if (argc == 1) {
     cout << list.print_usage();
   }
@@ -22,9 +23,8 @@ int main(int argc, char* argv[]) {
   }
 
   if ((argc == 3 && argv[1][1] == command_a[1])) {
-    string new_task = argv[2];
-    list.add_new_task(new_task);
-    cout << list.print_todos_list();
+    string new_task_content = argv[2];
+    list.append_new_task(new_task_content);
   }
 
   return 0;
