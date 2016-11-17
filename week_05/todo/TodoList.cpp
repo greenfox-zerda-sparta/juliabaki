@@ -110,27 +110,20 @@ void TodoList::task_array_to_file() {
 }
 
 void TodoList::remove_task(int index) {
-  string line = "neee";
   string temp_line;
   string temp_content;
   int line_counter = 0;
 
   ifstream in;
   in.open("todo_list.txt");
+  ofstream out("outfile.txt");
 
   if (in.is_open()) {
     while (getline(in, temp_content)) {
-      if (line_counter == index) {
-        line = temp_content;
+      if (line_counter != index) {
+        out << temp_content << "\n";
       }
       line_counter++;
-    }
-
-    ofstream out("outfile.txt");
-    while (getline(in, temp_line)) {
-      if (!(temp_line == line)){
-        out << temp_line << "\n";
-      }
     }
     in.close();
     out.close();
