@@ -15,7 +15,6 @@ int main(int argc, char* argv[]) {
     cout << list.print_usage();
   }
 
-
   // ./todo -l, -a, -r
 
   if ((argc == 2 && argv[1][1] == command_l[1])) {
@@ -34,10 +33,11 @@ int main(int argc, char* argv[]) {
 
   if ((argc == 3 && argv[1][1] == command_a[1])) {
     string new_task_content = argv[2];
-    list.append_new_task(new_task_content);
+    list.add_new_task(new_task_content);
   }
 
   // .todo -r int
+
   if((argc == 3 && argv[1][1] == command_r[1])){
     char* index_string = argv[2];
     int index = atoi(index_string);
