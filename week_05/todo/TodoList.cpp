@@ -126,22 +126,29 @@ void TodoList::add_new_task(string new_task_content) {
 
 void TodoList::remove_task(int index) {
   if (!is_list_empty()) {
-    Task** temp = new Task*[todo_counter - 1];
-    for (int i = 0; i < todo_counter; i++) {
-      temp[i] = todo_tasks[i];
+    if (index > todo_counter || index < 1) {
+      cerr << "Unable to remove: Index is out of bound" << endl;
+    } else {
+      Task** temp = new Task*[todo_counter - 1];
+      for (int i = 0; i < index - 1; i++) {
+        temp[i] = todo_tasks[i];
+      }
+      for(int j = index - 1; j < todo_counter; j++){
+        temp[j] = todo_tasks[j + 1];
+      }
+      delete[] todo_tasks;
+      todo_tasks = temp;
+      todo_counter--;
     }
-    delete[] todo_tasks;
-    todo_tasks = temp;
-    todo_counter--;
   } else {
-    cerr << "Your list is empty, can't remove anything.";
+    cerr << "Your list is empty, can't remove anything." << endl;
   }
 }
 
 /*
-void TodoList::print_array() {
-  for (int i = 0; i < todo_counter; i++) {
-  cout << todo_tasks[i]->content << endl;
+ void TodoList::print_array() {
+ for (int i = 0; i < todo_counter; i++) {
+ cout << todo_tasks[i]->content << endl;
  }
-}
-*/
+ }
+ */
