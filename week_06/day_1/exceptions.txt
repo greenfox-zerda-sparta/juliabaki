@@ -1,0 +1,13 @@
+Exceptions
+
+try{}
+throw - number(error code)
+handle error:
+catch(int x) (can give string error)
+
+try block and catch-block
+
+default catch(...)
+
+#include <exception>
+#include <stdexcept>

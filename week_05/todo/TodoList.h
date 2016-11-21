@@ -14,10 +14,9 @@ public:
   TodoList();
   virtual ~TodoList();
 
-  bool is_exists(string todo_file);
+  void ensure_file();
   void save_to_file();
   void read_from_file();
-  int task_counter();
 
   bool is_list_empty();
 
@@ -26,8 +25,6 @@ public:
 
   void add_new_task(string new_task);
   void remove_task(int index);
-
-  void print_array();
 
 private:
   Task** todo_tasks;

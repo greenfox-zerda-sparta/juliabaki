@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
     if (list.is_list_empty()) {
       cout << endl << "No todos for today :)" << endl;
     } else {
-      cout << list.print_todos_list();
+      list.print_todos_list();
     }
   } else if (argc == 2 && argv[1][1] == command_a[1]) {
     cerr << "Unable to add: No task is provided." << endl;
