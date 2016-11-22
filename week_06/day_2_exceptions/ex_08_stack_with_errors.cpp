@@ -10,16 +10,6 @@ using namespace std;
 //
 // Illustrate in the main function both when it works fine and when exceptions occur.
 
-string interpretExeption(int exception) {
-  switch (exception) {
-  case -1:
-    return "The stack is full.";
-  case 1:
-    return "The stack is empty.";
-  }
-  return "general error";
-}
-
 class Stack {
 private:
   int* array_of_elements;
@@ -30,7 +20,7 @@ public:
   ~Stack();
   void push(int input) throw (int);
   int pop() throw (int);
-  string interpretExeption(int exception);
+  string interpretException(int exception);
   void print_array();
 };
 
@@ -40,7 +30,7 @@ Stack::Stack() {
   this->max_size = 5;
 }
 
-Stack::~Stack(){
+Stack::~Stack() {
   delete[] array_of_elements;
   array_of_elements = nullptr;
 }
@@ -50,7 +40,7 @@ void Stack::push(int input) throw (int) {
     throw -1;
   }
   int* temp = new int[number_of_elements + 1];
-  for(int i = 0; i < number_of_elements; i++){
+  for (int i = 0; i < number_of_elements; i++) {
     temp[i] = array_of_elements[i];
   }
   temp[number_of_elements] = input;
@@ -67,6 +57,16 @@ int Stack::pop() throw (int) {
   return top_element;
 }
 
+string Stack::interpretException(int exception) {
+  switch (exception) {
+  case -1:
+    return "The stack is full.";
+  case 1:
+    return "The stack is empty.";
+  }
+  return "general error";
+}
+
 void Stack::print_array() {
   for (int i = 0; i < number_of_elements; i++) {
     cout << array_of_elements[i] << endl;
@@ -74,8 +74,8 @@ void Stack::print_array() {
 }
 
 int main() {
+  Stack stack;
   try {
-    Stack stack;
     stack.push(1);
     stack.push(2);
     stack.push(3);
@@ -84,14 +84,14 @@ int main() {
     stack.print_array();
     stack.push(6);
   } catch (int error) {
-    cout << "Error: " << interpretExeption(error) << endl;
+    cout << "Error: " << stack.interpretException(error) << endl;
   }
 
-  try{
-    Stack stack_1;
+  Stack stack_1;
+  try {
     cout << stack_1.pop();
-  }catch(int exp){
-    cout << "Error: " << interpretExeption(exp) << endl;
+  } catch (int exp) {
+    cout << "Error: " << stack_1.interpretException(exp) << endl;
   }
 
   return 0;
