@@ -1,0 +1,37 @@
+Pointers
+
+memory address = a memória mint "kockás papír"
+	 	a memória cím az egy rész száma 
+		(az alapján hogy milyen távol van az elejétõl növekszik)
+		ezt a számot a memória nem tartalmazza- a "távolság"- offset a kezdõponttól számít
+		(fizikailag el vannak helyezve!)- konvenció hogy honnan kezdjük a számolást
+		(mindegyik kapcsoló megfeleltethetõ egy kapcsolónak- van-e rajta áram vagy nincs)
+		
+		a szám kijelöl egy rekeszt- a rekeszben minidg lesz valami
+		a memory address egy származtatott szám- nem tároljuk sehol
+
+stack = tárolási forma, verem, ami felül van azt tudom kivenni elõször (FiLo -first in, last out)
+	itt tárolja azokat az adatokat amiket éppen használt adatokat
+	stack overflow (betelik ez a memóriarész és elhasal a program)
+	
+heap = kupac, tárolási forma, még renedelkezésre álló üres memóriaterület (RAM)
+	könnyen kereshetõ és elõhívható
+	össze-vissza tartalmazza az elemeket- elérhetõek bárhonnan
+	egy függvénynél több számára kell hogy elérhetõek legyenek
+	c++-ban törölni kell innen az adatokat amikor már nem kellenek
+	a globális változó ide kerül
+
+heap ~ stack = turmixgép ~ elõkészítõ tálak :D
+	
+pointer = változó ami memóracímet tartalmaz
+	olyan típusai lehetnek mint egy változónak = tudom hogy milyen típusú változóra mutat
+	(pl. int, char, float)
+
+	pointer-el lehet aritmetikai mûveleteket végezni
+	egy típusnyi mérettel ugrik arrébb a pointer ha hozzádaok egyet
+
+	void pointer = késõbbiekben lehet változtatni
+	memóriacímre mutat, akkora a mérete amekkora az alapegysége az adott rendszernek (64 bites redszeren 64 bit)
+	nem meghatározott típusú pointer
+
+	
