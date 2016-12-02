@@ -7,11 +7,12 @@
 
 class SecretNumber {
 public:
-  std::vector<int>secret_number;
+  std::vector<int>vector;
   SecretNumber();
   ~SecretNumber();
   void printVector();
   void generateSecretNumber();
+  bool hasRepeatingNumber();
 };
 
 #endif /* SECRETNUMBER_H_ */

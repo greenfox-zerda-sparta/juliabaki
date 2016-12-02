@@ -8,20 +8,32 @@
 
 class Game {
 private:
-  int BullsCounter;
-  int CowsCounter;
+  unsigned int bullsCounter;
+  unsigned int cowsCounter;
   int rounds;
   int roundCount;
+  bool userWin;
   SecretNumber secret_number;
   GuessNumber guess_number;
+
 public:
   Game(int rounds);
   ~Game();
-  int getBullsCount();
-  int getCowsCount();
+
+  void doRound();
+  void askUserForGuessNumber();
+
   void countBulls();
   void countCows();
-  void doRound();
+
+  void printResult();
+  int getBullsCount();
+  int getCowsCount();
+
+  bool isUserWin();
+
+  void resetGuessNumberAndCounters();
+
   bool isOver();
 };
 

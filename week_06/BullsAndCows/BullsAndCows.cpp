@@ -4,8 +4,10 @@
 using namespace std;
 
 int main(){
-  Game game(10);
-  game.doRound();
+  Game game(3);
+  while(!game.isOver()){
+    game.doRound();
+  }
 
   return 0;
 }
