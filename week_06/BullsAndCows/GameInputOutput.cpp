@@ -1,12 +1,15 @@
-#include "GameInputOutput.h"
-
 #include <iostream>
+#include <string>
+#include "GameInputOutput.h"
+#include "InputValidator.h"
 
 GameInputOutput::GameInputOutput() {
-  this->actualGuessNumber = 0;
+  inputValidator = new InputValidator(4);
 }
 
 GameInputOutput::~GameInputOutput() {
+  delete inputValidator;
+  inputValidator = NULL;
 }
 
 void GameInputOutput::printResult(int roundCount, int BullsCount, int CowsCount) {
@@ -15,13 +18,22 @@ void GameInputOutput::printResult(int roundCount, int BullsCount, int CowsCount)
   std::cout << "Cows: " << CowsCount << std::endl;
 }
 
-void GameInputOutput::askUserForGuessNumber() {
-  std::cout << "Your guess: " << std::endl;
-  std::cin >> actualGuessNumber;
+std::vector<int> GameInputOutput::askUserForGuessNumber() {
+  std::string guessString;
+  do {
+    guessString = "";
+    std::cout << "Your guess: " << std::endl;
+    std::cin >> guessString;
+  } while (!inputValidator->isValid(guessString));
+  return convertGuessStringToVector(guessString);
 }
 
-int GameInputOutput::getActualGuessNumber() {
-  return actualGuessNumber;
+std::vector<int> GameInputOutput::convertGuessStringToVector(std::string guessString) {
+  std::vector<int> result;
+  for (unsigned int i = 0; i < guessString.length(); i++) {
+    result.push_back(guessString[i] - '0');
+  }
+  return result;
 }
 
 void GameInputOutput::printUserWin() {

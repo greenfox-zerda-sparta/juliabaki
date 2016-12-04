@@ -3,20 +3,20 @@
 #define GAME_H_
 
 #include "SecretNumber.h"
-#include "GuessNumber.h"
 #include "GameInputOutput.h"
+#include "InputValidator.h"
 #include <vector>
-
 
 class Game {
 private:
+  std::vector<int> guessNumber;
   unsigned int bullsCounter;
   unsigned int cowsCounter;
   int rounds;
   int roundCount;
   bool userWin;
+
   SecretNumber secretNumber;
-  GuessNumber guessNumber;
   GameInputOutput gameInputOutput;
 
 public:

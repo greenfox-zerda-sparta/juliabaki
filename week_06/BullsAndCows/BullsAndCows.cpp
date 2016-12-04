@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-  Game game(3);
+  Game game(10);
   while(!game.isOver()){
     game.doRound();
   }
