@@ -10,9 +10,7 @@ public:
   std::vector<int>vector;
   SecretNumber();
   ~SecretNumber();
-  void printVector();
-  void generateSecretNumber();
-  bool hasRepeatingNumber();
+  void generateSecretNumberWithoutRepeating();
 };
 
 #endif /* SECRETNUMBER_H_ */

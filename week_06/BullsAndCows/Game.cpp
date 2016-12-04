@@ -12,48 +12,34 @@ Game::~Game() {
 }
 
 void Game::doRound() {
-  askUserForGuessNumber();
+  gameInputOutput.askUserForGuessNumber();
+  guessNumber.setGuessNumber(gameInputOutput.getActualGuessNumber());
   countBulls();
   countCows();
-  printResult();
+  gameInputOutput.printResult(roundCount, getBullsCount(), getCowsCount());
   userWin = isUserWin();
   roundCount++;
   resetGuessNumberAndCounters();
 }
 
-void Game::askUserForGuessNumber() {
-  int actual_guess_number;
-  std::cout << "Your guess: " << std::endl;
-  std::cin >> actual_guess_number;
-  guess_number.setGuessNumber(actual_guess_number);
-}
-
 void Game::countBulls() {
-  unsigned int secret_number_size = secret_number.vector.size();
+  unsigned int secret_number_size = secretNumber.vector.size();
   for (unsigned int i = 0; i < secret_number_size; i++) {
-    if (secret_number.vector[i] == guess_number.vector[i]) {
+    if (secretNumber.vector[i] == guessNumber.vector[i]) {
       this->bullsCounter++;
     }
   }
 }
 
 void Game::countCows() {
-  unsigned int size = secret_number.vector.size();
+  unsigned int size = secretNumber.vector.size();
   for (unsigned int i = 0; i < size; i++) {
     for (unsigned int j = 0; j < size; j++) {
-      if (secret_number.vector[i] == guess_number.vector[j] && i != j
-          && secret_number.vector[i] == guess_number.vector[j]) {
+      if (secretNumber.vector[i] == guessNumber.vector[j] && i != j) {
         this->cowsCounter++;
       }
     }
   }
-}
-
-void Game::printResult() {
-  secret_number.printVector();
-  std::cout << "Round: " << roundCount << " ";
-  std::cout << "Bulls: " << getBullsCount() << " ";
-  std::cout << "Cows: " << getCowsCount() << std::endl;
 }
 
 int Game::getBullsCount() {
@@ -65,11 +51,11 @@ int Game::getCowsCount() {
 }
 
 bool Game::isUserWin() {
-  return bullsCounter == secret_number.vector.size();
+  return bullsCounter == secretNumber.vector.size();
 }
 
 void Game::resetGuessNumberAndCounters() {
-  guess_number.vector.clear();
+  guessNumber.vector.clear();
   cowsCounter = 0;
   bullsCounter = 0;
 }
@@ -77,10 +63,10 @@ void Game::resetGuessNumberAndCounters() {
 bool Game::isOver() {
   bool result = false;
   if (userWin) {
-    std::cout << "Congratulations: You win!" << std::endl;
+    gameInputOutput.printUserWin();
     result = true;
   } else if (roundCount > rounds) {
-    std::cout << "Game over!" << std::endl;
+    gameInputOutput.printGameOver(secretNumber.vector);
     result = true;
   }
   return result;

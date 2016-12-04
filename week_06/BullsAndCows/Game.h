@@ -4,7 +4,9 @@
 
 #include "SecretNumber.h"
 #include "GuessNumber.h"
+#include "GameInputOutput.h"
 #include <vector>
+
 
 class Game {
 private:
@@ -13,20 +15,19 @@ private:
   int rounds;
   int roundCount;
   bool userWin;
-  SecretNumber secret_number;
-  GuessNumber guess_number;
+  SecretNumber secretNumber;
+  GuessNumber guessNumber;
+  GameInputOutput gameInputOutput;
 
 public:
   Game(int rounds);
   ~Game();
 
   void doRound();
-  void askUserForGuessNumber();
 
   void countBulls();
   void countCows();
 
-  void printResult();
   int getBullsCount();
   int getCowsCount();
 

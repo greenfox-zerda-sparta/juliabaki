@@ -10,9 +10,7 @@ public:
   std::vector<int>vector;
   GuessNumber();
   ~GuessNumber();
-  void printVector();
   void setGuessNumber(int guess_number);
-  bool hasRepeatingNumber();
 };
 
 #endif /* GUESSNUMBER_H_ */

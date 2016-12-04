@@ -1,41 +1,27 @@
-
 #include "SecretNumber.h"
-#include <stdlib.h>
-#include <time.h>
+#include <random>
+#include <chrono>
+#include <array>
+#include <algorithm>
 
 SecretNumber::SecretNumber() {
-  generateSecretNumber();
+  generateSecretNumberWithoutRepeating();
 }
 
 SecretNumber::~SecretNumber() {
 }
 
-void SecretNumber::printVector(){
-  unsigned int size = vector.size();
-  for(unsigned int i = 0; i < size; i++){
-    std::cout << vector[i];
-  }
-}
-
-void SecretNumber::generateSecretNumber(){
-  int random_number;
-  srand (time(NULL));
-  random_number = rand() % 9000 + 1000;
-  vector.push_back(random_number / 1000 % 10);
-  vector.push_back(random_number / 100 % 10);
-  vector.push_back(random_number / 10 % 10);
-  vector.push_back(random_number % 10);
-}
-
-bool SecretNumber::hasRepeatingNumber(){
-  bool result = false;
-  unsigned int initial_index = 0;
-  for(unsigned int i = 0; i < vector.size(); i++){
-    if(vector[i] == vector[initial_index] && i != initial_index){
-      result = true;
-    } else if (i == vector.size() - 1 ){
-      initial_index++;
+void SecretNumber::generateSecretNumberWithoutRepeating(){
+  std::array<int,10> possible_digits = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+  std::shuffle (possible_digits.begin(), possible_digits.end(), std::default_random_engine(seed));
+  int digit = 0;
+  for(int i = 0; i < 4; i++){
+    digit = possible_digits[i];
+    if(vector.empty() && digit == 0){
+      digit = possible_digits[i + 1];
+    } else {
+      vector.push_back(digit);
     }
   }
-  return result;
 }
