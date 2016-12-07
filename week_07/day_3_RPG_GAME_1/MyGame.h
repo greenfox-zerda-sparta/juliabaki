@@ -4,6 +4,9 @@
 #include "game-engine.hpp"
 
 class MyGame: public Game {
+private:
+  bool map[10][10];
+  void fill_map();
 public:
   void init(GameContext&);
   void render(GameContext&);
