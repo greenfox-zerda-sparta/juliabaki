@@ -10,6 +10,7 @@ private:
 public:
   void init(GameContext&);
   void render(GameContext&);
+  void print_array();
   ~MyGame();
 };
 
