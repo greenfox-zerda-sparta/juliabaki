@@ -1,12 +1,11 @@
 #include "MyGame.h"
-#include <fstream>
-#include <string>
-#include <iostream>
+#include "Character.h"
 
 MyGame::MyGame() {
   this->map = new Map;
   this->hero_count = 1;
   this->skeleton_count = 3;
+  this->boss_count = 1;
   load_characters();
 }
 
@@ -29,26 +28,16 @@ void MyGame::init(GameContext& context) {
 }
 
 void MyGame::load_characters() {
-  Hero* hero = new Hero();
-  hero->set_map(*map);
-  this->characters.push_back(hero);
-
+  hero_factory();
   skeleton_factory();
-
-  Boss* boss = new Boss();
-  boss->set_map(*map);
-  this->characters.push_back(boss);
+  boss_factory();
 }
 
-void MyGame::render(GameContext& context) {
-  map->draw_map(context);
-  draw_characters(context);
-  context.render();
-}
-
-void MyGame::draw_characters(GameContext& context) {
-  for (unsigned int i = characters.size() ; i > 0 ; --i) {
-    characters[i-1]->draw(context);
+void MyGame::hero_factory() {
+  for (int i = 0; i < hero_count; i++) {
+    Hero* hero = new Hero();
+    hero->set_map(*map);
+    this->characters.push_back(hero);
   }
 }
 
@@ -59,3 +48,24 @@ void MyGame::skeleton_factory() {
     this->characters.push_back(skeleton);
   }
 }
+
+void MyGame::boss_factory() {
+  for (int i = 0; i < boss_count; i++) {
+    Boss* boss = new Boss();
+    boss->set_map(*map);
+    this->characters.push_back(boss);
+  }
+}
+
+void MyGame::draw_characters(GameContext& context) {
+  for (unsigned int i = characters.size() ; i > 0 ; --i) {
+    characters[i-1]->draw(context);
+  }
+}
+
+void MyGame::render(GameContext& context) {
+  map->draw_map(context);
+  draw_characters(context);
+  context.render();
+}
+

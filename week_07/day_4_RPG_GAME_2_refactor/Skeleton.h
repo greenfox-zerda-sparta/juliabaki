@@ -8,13 +8,13 @@
 #include <time.h>
 
 class Skeleton: public Character {
-private:
-  int skeleton_x, skeleton_y;
 public:
   Skeleton();
   ~Skeleton();
+
   void draw(GameContext& context);
   void move(GameContext&);
+
   void set_coordinates();
   bool valid_coordinate();
 };

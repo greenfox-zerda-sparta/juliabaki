@@ -12,14 +12,17 @@ class MyGame: public Game {
 private:
   std::vector<Character*> characters;
   Map* map;
-  int hero_count = 1;
-  int skeleton_count = 3;
+  int hero_count;
+  int skeleton_count;
+  int boss_count;
 
 public:
   MyGame();
   ~MyGame();
   void load_characters();
+  void hero_factory();
   void skeleton_factory();
+  void boss_factory();
 
   void load_map_from_file_to_vector();
   void draw_map(GameContext& context);
