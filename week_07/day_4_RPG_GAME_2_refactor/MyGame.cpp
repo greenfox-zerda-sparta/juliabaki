@@ -34,12 +34,15 @@ void MyGame::load_characters() {
   this->characters.push_back(hero);
 
   skeleton_factory();
+
+  Boss* boss = new Boss();
+  boss->set_map(*map);
+  this->characters.push_back(boss);
 }
 
 void MyGame::render(GameContext& context) {
   map->draw_map(context);
   draw_characters(context);
-  context.draw_sprite("boss.bmp", 648, 648);
   context.render();
 }
 

@@ -2,9 +2,9 @@
 #define MYGAME_H_
 
 #include "game-engine.hpp"
-#include "Character.h"
 #include "Hero.h"
 #include "Skeleton.h"
+#include "Boss.h"
 #include "Map.h"
 #include <vector>
 
