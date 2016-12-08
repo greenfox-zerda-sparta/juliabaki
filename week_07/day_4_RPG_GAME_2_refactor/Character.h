@@ -10,7 +10,14 @@ class Character {
 protected:
   int coordinate_x;
   int coordinate_y;
+
+  int max_health_point;
+  int current_health_point;
+  int defend_point;
+  int strike_point;
+
   Map map;
+
   virtual void move(GameContext&) = 0;
 public:
   Character();

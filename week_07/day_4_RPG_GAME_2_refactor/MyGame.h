@@ -11,10 +11,14 @@
 class MyGame: public Game {
 private:
   std::vector<Character*> characters;
+  std::vector<Monster*> monsters;
   Map* map;
+
   int hero_count;
   int skeleton_count;
   int boss_count;
+
+  int hero_move_counter;
 
 public:
   MyGame();
@@ -27,6 +31,10 @@ public:
 
   void draw_map(GameContext& context);
   void draw_characters(GameContext& context);
+
+  void set_move_counter();
+  void move_monsters();
+  void fight();
 
   void init(GameContext&);
   void render(GameContext&);

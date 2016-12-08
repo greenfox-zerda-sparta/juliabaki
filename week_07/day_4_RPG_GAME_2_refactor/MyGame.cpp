@@ -6,12 +6,16 @@ MyGame::MyGame() {
   this->hero_count = 1;
   this->skeleton_count = 3;
   this->boss_count = 1;
+  this->hero_move_counter = 0;
   load_characters();
 }
 
 MyGame::~MyGame() {
   for (unsigned int i = 0; i < characters.size(); i++) {
     delete characters[i];
+  }
+  for (unsigned int i = 0; i < monsters.size(); i++) {
+    delete monsters[i];
   }
   delete map;
 }
@@ -47,6 +51,7 @@ void MyGame::skeleton_factory() {
     Skeleton* skeleton = new Skeleton();
     skeleton->set_map(*map);
     this->characters.push_back(skeleton);
+    this->monsters.push_back(skeleton);
   }
 }
 
@@ -55,6 +60,7 @@ void MyGame::boss_factory() {
     Boss* boss = new Boss();
     boss->set_map(*map);
     this->characters.push_back(boss);
+    this->monsters.push_back(boss);
   }
 }
 
@@ -62,8 +68,9 @@ bool MyGame::are_characters_in_same_position() {
   bool result = false;
   for (unsigned int i = 0; i < characters.size(); i++) {
     for (unsigned int j = 0; j < characters.size(); j++) {
-      if(characters[i]->get_coordinate_x() == characters[j]->get_coordinate_x()
-         && characters[i]->get_coordinate_y() == characters[j]->get_coordinate_y() && i != j){
+      if (characters[i]->get_coordinate_x() == characters[j]->get_coordinate_x()
+          && characters[i]->get_coordinate_y()
+              == characters[j]->get_coordinate_y() && i != j) {
         load_characters();
       }
     }
@@ -83,3 +90,8 @@ void MyGame::render(GameContext& context) {
   context.render();
 }
 
+void MyGame::move_monsters() {
+  for (unsigned int i = 0; i < monsters.size(); i++) {
+    monsters[i]->move();
+  }
+}
