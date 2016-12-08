@@ -4,6 +4,7 @@
 #include <iostream>
 
 MyGame::MyGame() {
+  this->map = new Map;
   load_characters();
 }
 
@@ -27,22 +28,28 @@ void MyGame::init(GameContext& context) {
 }
 
 void MyGame::load_characters() {
-  map = new Map;
-
-  hero = new Hero(*map);
+  Hero* hero = new Hero(*map);
   this->characters.push_back(hero);
+
+  skeleton_factory();
 }
 
 void MyGame::render(GameContext& context) {
   map->draw_map(context);
-
-  context.draw_sprite("skeleton.bmp", 0, 72);
-  context.draw_sprite("skeleton.bmp", 216, 72);
-  context.draw_sprite("skeleton.bmp", 648, 216);
+  draw_characters(context);
   context.draw_sprite("boss.bmp", 648, 648);
-
-  hero->draw(context);
-
   context.render();
 }
 
+void MyGame::draw_characters(GameContext& context) {
+  for (unsigned int i = 0; i < characters.size(); i++) {
+    characters[i]->draw(context);
+  }
+}
+
+void MyGame::skeleton_factory() {
+  for (int i = 0; i < skeleton_count; i++) {
+    Skeleton* skeleton = new Skeleton(*map);
+    this->characters.push_back(skeleton);
+  }
+}
