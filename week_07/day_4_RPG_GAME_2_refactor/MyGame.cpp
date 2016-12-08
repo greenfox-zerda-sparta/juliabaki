@@ -31,6 +31,7 @@ void MyGame::load_characters() {
   hero_factory();
   skeleton_factory();
   boss_factory();
+  are_characters_in_same_position();
 }
 
 void MyGame::hero_factory() {
@@ -57,9 +58,22 @@ void MyGame::boss_factory() {
   }
 }
 
+bool MyGame::are_characters_in_same_position() {
+  bool result = false;
+  for (unsigned int i = 0; i < characters.size(); i++) {
+    for (unsigned int j = 0; j < characters.size(); j++) {
+      if(characters[i]->get_coordinate_x() == characters[j]->get_coordinate_x()
+         && characters[i]->get_coordinate_y() == characters[j]->get_coordinate_y() && i != j){
+        load_characters();
+      }
+    }
+  }
+  return result;
+}
+
 void MyGame::draw_characters(GameContext& context) {
-  for (unsigned int i = characters.size() ; i > 0 ; --i) {
-    characters[i-1]->draw(context);
+  for (unsigned int i = characters.size(); i > 0; --i) {
+    characters[i - 1]->draw(context);
   }
 }
 

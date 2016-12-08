@@ -8,7 +8,7 @@ Boss::~Boss() {
 }
 
 void Boss::draw(GameContext& context) {
-  context.draw_sprite("boss.bmp", character_x * 72, character_y * 72);
+  context.draw_sprite("boss.bmp", coordinate_x * 72, coordinate_y * 72);
 }
 
 void Boss::move(GameContext&) {

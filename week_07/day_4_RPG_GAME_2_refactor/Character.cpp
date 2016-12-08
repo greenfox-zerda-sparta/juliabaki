@@ -2,8 +2,8 @@
 #include "Map.h"
 
 Character::Character() {
-  character_x = 0;
-  character_y = 0;
+  coordinate_x = 0;
+  coordinate_y = 0;
 }
 
 Character::~Character() {
@@ -14,17 +14,21 @@ void Character::set_map(Map& map) {
 }
 
 void Character::set_coordinates() {
-  this->character_x = (rand() % 9);
-  this->character_y = (rand() % 9);
+  this->coordinate_x = rand() % 9 + 1;
+  this->coordinate_y = rand() % 9 + 1;
   if(!valid_coordinate()){
     set_coordinates();
   }
 }
 
+int Character::get_coordinate_x(){
+  return coordinate_x;
+}
+
+int Character::get_coordinate_y(){
+  return coordinate_y;
+}
+
 bool Character::valid_coordinate() {
-  bool result = true;
-  if (!map.map_vector[character_y][character_x]) {
-    result = false;
-  }
-  return result;
+  return map.map_vector[coordinate_y][coordinate_x];
 }

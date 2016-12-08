@@ -8,16 +8,16 @@
 
 class Character {
 protected:
-  int character_x;
-  int character_y;
+  int coordinate_x;
+  int coordinate_y;
   Map map;
   virtual void move(GameContext&) = 0;
 public:
   Character();
   virtual ~Character();
 
-  int get_character_x();
-  int get_character_y();
+  int get_coordinate_x();
+  int get_coordinate_y();
 
   void set_map(Map& map);
 

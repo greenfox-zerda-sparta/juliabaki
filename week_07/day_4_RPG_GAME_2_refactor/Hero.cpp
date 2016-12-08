@@ -1,8 +1,8 @@
 #include "Hero.h"
 
 Hero::Hero() {
-  this->character_x = 0;
-  this->character_y = 0;
+  this->coordinate_x = 0;
+  this->coordinate_y = 0;
   this->hero_x_max = 648;
   this->hero_y_max = 648;
   this->hero_x_min = 0;
@@ -15,45 +15,44 @@ Hero::~Hero() {
 
 void Hero::draw(GameContext& context) {
   move(context);
-  context.draw_sprite(hero_status, character_x, character_y);
+  context.draw_sprite(hero_status, coordinate_x, coordinate_y);
 }
 
 void Hero::move(GameContext& context) {
   if (context.was_key_pressed(ARROW_DOWN)) {
-    if (character_y < hero_y_max) {
-      character_y += 72;
-      if (map.map_vector[character_y / 72][character_x / 72] == false) {
-        character_y -= 72;
+    if (coordinate_y < hero_y_max) {
+      coordinate_y += 72;
+      if (map.map_vector[coordinate_y / 72][coordinate_x / 72] == false) {
+        coordinate_y -= 72;
       }
     }
     hero_status = "hero-down.bmp";
   }
   if (context.was_key_pressed(ARROW_LEFT)) {
-    if (character_x > hero_x_min) {
-      character_x -= 72;
-      if (map.map_vector[character_y / 72][character_x / 72] == false) {
-        character_x += 72;
+    if (coordinate_x > hero_x_min) {
+      coordinate_x -= 72;
+      if (map.map_vector[coordinate_y / 72][coordinate_x / 72] == false) {
+        coordinate_x += 72;
       }
     }
     hero_status = "hero-left.bmp";
   }
   if (context.was_key_pressed(ARROW_RIGHT)) {
-    if (character_x < hero_x_max) {
-      character_x += 72;
-      if (map.map_vector[character_y / 72][character_x / 72] == false) {
-        character_x -= 72;
+    if (coordinate_x < hero_x_max) {
+      coordinate_x += 72;
+      if (map.map_vector[coordinate_y / 72][coordinate_x / 72] == false) {
+        coordinate_x -= 72;
       }
     }
     hero_status = "hero-right.bmp";
   }
   if (context.was_key_pressed(ARROW_UP)) {
-    if (character_y > hero_y_min) {
-      character_y -= 72;
-      if (map.map_vector[character_y / 72][character_x / 72] == false) {
-        character_y += 72;
+    if (coordinate_y > hero_y_min) {
+      coordinate_y -= 72;
+      if (map.map_vector[coordinate_y / 72][coordinate_x / 72] == false) {
+        coordinate_y += 72;
       }
     }
     hero_status = "hero-up.bmp";
   }
 }
-

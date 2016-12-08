@@ -23,8 +23,8 @@ public:
   void hero_factory();
   void skeleton_factory();
   void boss_factory();
+  bool are_characters_in_same_position();
 
-  void load_map_from_file_to_vector();
   void draw_map(GameContext& context);
   void draw_characters(GameContext& context);
 

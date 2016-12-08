@@ -14,9 +14,6 @@ public:
 
   void draw(GameContext& context);
   void move(GameContext&);
-
-  void set_coordinates();
-  bool valid_coordinate();
 };
 
 #endif /* SKELETON_H_ */
