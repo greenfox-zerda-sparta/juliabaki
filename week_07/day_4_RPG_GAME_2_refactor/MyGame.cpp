@@ -5,13 +5,14 @@
 
 MyGame::MyGame() {
   map_vector = std::vector<std::vector<bool>>(10, std::vector<bool>(10));
-  hero = new Character;
+  load_characters();
 }
 
 MyGame::~MyGame() {
-  delete hero;
+  for (unsigned int i = 0; i < characters.size(); i++) {
+    delete characters[i];
+  }
 }
-
 
 void MyGame::init(GameContext& context) {
   context.load_file("floor.bmp");
@@ -43,6 +44,11 @@ void MyGame::load_map_from_file_to_vector() {
   input.close();
 }
 
+void MyGame::load_characters() {
+  hero = new Hero;
+  this->characters.push_back(hero);
+}
+
 void MyGame::draw_map(GameContext& context) {
   load_map_from_file_to_vector();
   for (unsigned int i = 0; i < 10; i++) {
@@ -64,7 +70,7 @@ void MyGame::render(GameContext& context) {
   context.draw_sprite("skeleton.bmp", 648, 216);
   context.draw_sprite("boss.bmp", 648, 648);
 
-  hero->draw_hero(context);
+  hero->draw(context);
 
   context.render();
 }
