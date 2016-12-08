@@ -2,6 +2,7 @@
 #define HERO_H_
 
 #include "Character.h"
+#include "Map.h"
 
 class Hero : public Character {
 public:
@@ -12,8 +13,9 @@ public:
   int hero_x_min = 0;
   int hero_y_min = 0;
   std::string hero_status = "hero-down.bmp";
+  Map map;
 
-  Hero();
+  Hero(Map& map);
   ~Hero();
   void draw(GameContext& context);
   void move(GameContext&);

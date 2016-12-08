@@ -9,7 +9,6 @@
 
 class MyGame: public Game {
 private:
-  //std::vector<std::vector <bool>> map_vector;
   std::vector<Character*> characters;
   Hero* hero;
   Map* map;

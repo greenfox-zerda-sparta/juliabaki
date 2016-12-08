@@ -27,10 +27,10 @@ void MyGame::init(GameContext& context) {
 }
 
 void MyGame::load_characters() {
-  hero = new Hero;
-  this->characters.push_back(hero);
-
   map = new Map;
+
+  hero = new Hero(*map);
+  this->characters.push_back(hero);
 }
 
 void MyGame::render(GameContext& context) {

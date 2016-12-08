@@ -4,10 +4,13 @@
 
 #include "game-engine.hpp"
 #include <vector>
+#include "Map.h"
 
 class Character {
 public:
-  Character();
+  Map map;
+  Character(){};
+  Character(Map& map);
   virtual ~Character();
   virtual void draw(GameContext& context) = 0;
   virtual void move(GameContext&) = 0;

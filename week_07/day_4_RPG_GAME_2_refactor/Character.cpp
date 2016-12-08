@@ -1,6 +1,8 @@
 #include "Character.h"
+#include "Map.h"
 
-Character::Character() {
+Character::Character(Map& map) {
+  this->map = map;
 }
 
 Character::~Character() {
