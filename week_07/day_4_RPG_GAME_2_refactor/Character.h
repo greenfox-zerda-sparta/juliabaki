@@ -7,13 +7,14 @@
 #include "Map.h"
 
 class Character {
-public:
+protected:
   Map map;
-  Character(){};
-  Character(Map& map);
+  virtual void move(GameContext&) = 0;
+public:
+  Character();
+  void set_map(Map& map);
   virtual ~Character();
   virtual void draw(GameContext& context) = 0;
-  virtual void move(GameContext&) = 0;
 };
 
 #endif /* CHARACTER_H_ */

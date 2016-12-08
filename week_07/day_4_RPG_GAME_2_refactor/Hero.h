@@ -13,9 +13,8 @@ public:
   int hero_x_min;
   int hero_y_min;
   std::string hero_status = "hero-down.bmp";
-  Map map;
 
-  Hero(Map& map);
+  Hero();
   ~Hero();
   void draw(GameContext& context);
   void move(GameContext&);

@@ -14,7 +14,6 @@ MyGame::~MyGame() {
   for (unsigned int i = 0; i < characters.size(); i++) {
     delete characters[i];
   }
-
   delete map;
 }
 
@@ -30,7 +29,8 @@ void MyGame::init(GameContext& context) {
 }
 
 void MyGame::load_characters() {
-  Hero* hero = new Hero(*map);
+  Hero* hero = new Hero();
+  hero->set_map(*map);
   this->characters.push_back(hero);
 
   skeleton_factory();
@@ -44,14 +44,15 @@ void MyGame::render(GameContext& context) {
 }
 
 void MyGame::draw_characters(GameContext& context) {
-  for (unsigned int i = 0; i < characters.size(); i++) {
-    characters[i]->draw(context);
+  for (unsigned int i = characters.size() ; i > 0 ; --i) {
+    characters[i-1]->draw(context);
   }
 }
 
 void MyGame::skeleton_factory() {
   for (int i = 0; i < skeleton_count; i++) {
-    Skeleton* skeleton = new Skeleton(*map);
+    Skeleton* skeleton = new Skeleton();
+    skeleton->set_map(*map);
     this->characters.push_back(skeleton);
   }
 }

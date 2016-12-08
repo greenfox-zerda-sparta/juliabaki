@@ -1,8 +1,7 @@
 #include "Skeleton.h"
 #include <iostream>
 
-Skeleton::Skeleton(Map& map) {
-  this->map = map;
+Skeleton::Skeleton() {
   set_coordinates();
 }
 

@@ -9,10 +9,9 @@
 
 class Skeleton: public Character {
 private:
-  Map map;
   int skeleton_x, skeleton_y;
 public:
-  Skeleton(Map& map);
+  Skeleton();
   ~Skeleton();
   void draw(GameContext& context);
   void move(GameContext&);

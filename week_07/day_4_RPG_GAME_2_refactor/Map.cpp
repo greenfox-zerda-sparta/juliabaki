@@ -1,5 +1,6 @@
 #include "Map.h"
 #include <fstream>
+#include <iostream>
 
 Map::Map() {
   map_vector = std::vector<std::vector<bool>>(10, std::vector<bool>(10));

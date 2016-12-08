@@ -1,7 +1,6 @@
 #include "Hero.h"
 
-Hero::Hero(Map& map) {
-  this->map = map;
+Hero::Hero() {
   this->hero_x = 0;
   this->hero_y = 0;
   this->hero_x_max = 648;
