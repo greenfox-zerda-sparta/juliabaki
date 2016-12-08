@@ -1,9 +1,9 @@
 #ifndef BOSS_H_
 #define BOSS_H_
 
-#include "Character.h"
+#include "Monster.h"
 
-class Boss: public Character {
+class Boss: public Monster {
 public:
   Boss();
   ~Boss();
