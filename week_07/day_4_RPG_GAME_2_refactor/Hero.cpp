@@ -2,6 +2,12 @@
 
 Hero::Hero(Map& map) {
   this->map = map;
+  this->hero_x = 0;
+  this->hero_y = 0;
+  this->hero_x_max = 648;
+  this->hero_y_max = 648;
+  this->hero_x_min = 0;
+  this->hero_y_min = 0;
 }
 
 Hero::~Hero() {

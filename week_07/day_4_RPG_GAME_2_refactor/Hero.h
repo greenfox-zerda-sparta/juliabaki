@@ -6,12 +6,12 @@
 
 class Hero : public Character {
 public:
-  int hero_x = 0;
-  int hero_y = 0;
-  int hero_x_max = 648;
-  int hero_y_max = 648;
-  int hero_x_min = 0;
-  int hero_y_min = 0;
+  int hero_x;
+  int hero_y;
+  int hero_x_max;
+  int hero_y_max;
+  int hero_x_min;
+  int hero_y_min;
   std::string hero_status = "hero-down.bmp";
   Map map;
 

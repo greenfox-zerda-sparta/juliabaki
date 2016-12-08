@@ -8,7 +8,7 @@
 #include <time.h>
 
 class Skeleton: public Character {
-public:
+private:
   Map map;
   int skeleton_x, skeleton_y;
 public:
@@ -16,6 +16,8 @@ public:
   ~Skeleton();
   void draw(GameContext& context);
   void move(GameContext&);
+  void set_coordinates();
+  bool valid_coordinate();
 };
 
 #endif /* SKELETON_H_ */

@@ -5,6 +5,8 @@
 
 MyGame::MyGame() {
   this->map = new Map;
+  this->hero_count = 1;
+  this->skeleton_count = 3;
   load_characters();
 }
 
