@@ -38,7 +38,9 @@ void MyGame::load_characters() {
   //boss_factory();
 
   character_factory();
-  are_characters_in_same_position();
+  if (are_characters_in_same_position()) {
+    load_characters();
+  }
 }
 
 void MyGame::character_factory() {
