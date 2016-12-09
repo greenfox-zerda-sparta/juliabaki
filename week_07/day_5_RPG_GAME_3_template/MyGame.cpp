@@ -33,10 +33,6 @@ int MyGame::get_hero_count() {
 }
 
 void MyGame::load_characters() {
-  //hero_factory();
-  //skeleton_factory();
-  //boss_factory();
-
   character_factory();
   if (are_characters_in_same_position()) {
     load_characters();
