@@ -5,7 +5,8 @@
 // Use preprocessor to define the MY_PI constant. Use this in the calculations.
 
 #define MY_PI 3.14
-#define radius(a) a * MY_PI
+#define circum_ference(r) 2 * r * MY_PI
+#define area(r) r * r * MY_PI
 
 #include <stdlib.h>
 #include <iostream>
@@ -17,7 +18,9 @@ int main(){
   srand (time(NULL));
   for(int i = 1; i < 6; i++){
     array[i] = rand() % 10;
-    std::cout << "Radius: " << array[i] << ", Area: " << radius(array[i]) << std::endl;
+    std::cout << "Radius: " << array[i]
+              << ", Circumference: " << circum_ference(array[i])
+              << ", Area: " << area(array[i]) << std::endl;
   }
   return 0;
 }
