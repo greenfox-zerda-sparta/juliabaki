@@ -16,26 +16,30 @@ using namespace std;
 // Mike - Joe
 
 void print(map<string, string> my_map) {
-  for (map<string, string>::iterator it = my_map.begin(); it != my_map.end();
-      it++) {
+  for (map<string, string>::iterator it = my_map.begin(); it != my_map.end(); it++) {
     cout << it->first << " - " << it->second << endl;
   }
 }
 
-void choose_secret_santa(map<string, string>& secret_santa, vector<string> names) {
+void choose_secret_santa(map<string, string>& pairs, vector<string> names) {
   std::random_shuffle(names.begin(), names.end());
-  int i = 0;
-  for (map<string, string>::iterator it = secret_santa.begin(); it != secret_santa.end(); it++) {
-    if(it->second == names[i]){
-      choose_secret_santa(secret_santa, names);
+  for_each(names.begin(), names.end(), [](string element){cout << element << endl;});
+  for (map<string, string>::iterator it = pairs.begin(); it != pairs.end(); it++) {
+    if(it->first != names[0]){
+      it->second = names[0];
+      names.erase(names.begin());
+    } else if (names.size() > 1){
+      it->second = names[1];
+      names.erase(names.begin() + 1);
+    } else {
+      it->second = pairs.begin()->second;
+      pairs.begin()->second = names[0];
     }
-    it->second = names[i];
-    i++;
   }
 }
 
 int main() {
-  map<string, string> secret_santa;
+  map<string, string> pairs;
   cout << "Enter names, press q for quit" << endl;
   string name;
   vector<string> names;
@@ -43,12 +47,12 @@ int main() {
     cin >> name;
     if (name != "q") {
       names.push_back(name);
-      secret_santa.insert(std::make_pair(name, name));
+      pairs.insert(std::make_pair(name, ""));
     }
   }
 
-  choose_secret_santa(secret_santa, names);
-  print(secret_santa);
+  choose_secret_santa(pairs, names);
+  print(pairs);
 
   return 0;
 }
