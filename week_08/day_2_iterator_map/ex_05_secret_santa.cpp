@@ -3,6 +3,8 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
@@ -22,6 +24,7 @@ void print(map<string, string> my_map) {
 }
 
 void choose_secret_santa(map<string, string>& pairs, vector<string> names) {
+  std::srand ( unsigned ( std::time(0) ) );
   std::random_shuffle(names.begin(), names.end());
   for_each(names.begin(), names.end(), [](string element){cout << element << endl;});
   for (map<string, string>::iterator it = pairs.begin(); it != pairs.end(); it++) {
