@@ -71,7 +71,7 @@ void Color::darken(float amount) {
     _green -= _green * amount;
     _blue -= _blue * amount;
   } else {
-    throw "not valid amount.";
+    throw "not valid amount of darken.";
   }
 }
 
@@ -81,6 +81,7 @@ void Color::lighten(float amount) {
     _green += (255 - _green) * amount;
     _blue += (255 - _blue) * amount;
   } else {
-    throw "not valid amount.";
+    throw "not valid amount of lighten.";
   }
 }
+

@@ -23,6 +23,12 @@ public:
   Color blend(const Color& other);
   void darken(float amount);
   void lighten(float amount);
+
+  Color operator+(const Color& other) {
+    Color blended_color;
+    blended_color = blend(other);
+    return blended_color;
+  }
 };
 
 #endif /* COLOR_H_ */
