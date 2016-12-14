@@ -3,7 +3,9 @@
 #include <math.h>
 #include <ctype.h>
 
-Color::Color() : _red(0), _green(0), _blue(0) {}
+Color::Color() :
+    _red(0), _green(0), _blue(0) {
+}
 
 Color::Color(unsigned char red, unsigned char green, unsigned char blue) {
   this->_red = red;
@@ -63,14 +65,22 @@ Color Color::blend(const Color& other) {
   return blended_color;
 }
 
-void Color::darken(float amount){
-  _red -= _red * amount;
-  _green -= _green * amount;
-  _blue -= _blue * amount;
+void Color::darken(float amount) {
+  if (amount > 0 && amount < 1) {
+    _red -= _red * amount;
+    _green -= _green * amount;
+    _blue -= _blue * amount;
+  } else {
+    throw "not valid amount.";
+  }
 }
 
-void Color::lighten(float amount){
-  _red += (255 - _red) * amount;
-  _green += (255 - _green) * amount;
-  _blue += (255 - _blue) * amount;
+void Color::lighten(float amount) {
+  if (amount > 0 && amount < 1) {
+    _red += (255 - _red) * amount;
+    _green += (255 - _green) * amount;
+    _blue += (255 - _blue) * amount;
+  } else {
+    throw "not valid amount.";
+  }
 }
