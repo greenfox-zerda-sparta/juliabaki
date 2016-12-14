@@ -62,3 +62,15 @@ Color Color::blend(const Color& other) {
   blended_color._blue = (this->_blue + other._blue) / 2;
   return blended_color;
 }
+
+void Color::darken(float amount){
+  _red -= _red * amount;
+  _green -= _green * amount;
+  _blue -= _blue * amount;
+}
+
+void Color::lighten(float amount){
+  _red += (255 - _red) * amount;
+  _green += (255 - _green) * amount;
+  _blue += (255 - _blue) * amount;
+}
