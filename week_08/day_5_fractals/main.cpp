@@ -2,24 +2,27 @@
 #include "SDL2/SDL.h"
 #include "draw.h"
 
-int drawLines(draw d, SDL_Renderer* renderer, int size) {
-  int x = size / 3;
+int drawLines(draw& d, SDL_Renderer* renderer, int x_null, int x_max, int y_null, int y_max) {
+  int size = x_max - x_null;
+  int step = size / 3;
 
-  d.MoveTo(1 * x, 0 * x);
-  d.DrawTo(renderer, 1 * x, 3 * x);
+  d.MoveTo(x_null + step, y_null);
+  d.DrawTo(renderer, x_null + step, y_max);
 
-  d.MoveTo(2 * x, 0 * x);
-  d.DrawTo(renderer, 2 * x, 3 * x);
+  d.MoveTo(x_max - step, y_null);
+  d.DrawTo(renderer, x_max - step, y_max);
 
-  d.MoveTo(0 * x, x);
-  d.DrawTo(renderer, 3 * x, 1 * x);
+  d.MoveTo(x_null, y_null + step);
+  d.DrawTo(renderer, x_max, y_null + step);
 
-  d.MoveTo(0 * x, 2 * x);
-  d.DrawTo(renderer, 3 * x, 2 * x);
+  d.MoveTo(x_null, y_max - step);
+  d.DrawTo(renderer, x_max, y_max - step);
 
-  size = x;
-  if(size > 0){
-    drawLines(d, renderer, size);
+  if (size > 10) {
+    drawLines(d, renderer, x_null + step, x_max - step, y_null, y_null + step);
+    drawLines(d, renderer, x_null, x_null + step, y_null + step, y_max - step);
+    drawLines(d, renderer, x_max - step, x_max, y_null + step, y_max - step);
+    drawLines(d, renderer, x_null + step, x_max - step, y_max - step, y_max);
   }
   return size;
 }
@@ -53,14 +56,12 @@ int main(int argc, char ** argv) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 80); //vonal színe
     draw d;
 
-    int size = 600;
-    drawLines(d, renderer, size);
+    drawLines(d, renderer, 0, 600, 0, 600);
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 
-    SDL_RenderPresent(renderer);
   }
-
+  SDL_RenderPresent(renderer);
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   SDL_Quit();
