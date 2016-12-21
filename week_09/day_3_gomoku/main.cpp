@@ -1,7 +1,6 @@
 #include "SDLWindow.h"
-#include "SDL2/SDL.h"
 
 int main(int argc, char *argv[]) {
-  SDL_Window sdl_window;
+  SDL_Window sdl_window(600, 600);
   return 0;
 }

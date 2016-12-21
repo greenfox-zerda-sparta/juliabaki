@@ -4,10 +4,13 @@
 #include "SDL2/SDL.h"
 
 class SDL_Window {
-public:
+private:
   SDL_Window *window;
-  SDL_Window();
+  SDL_Event event;
+public:
+  SDL_Window(int, int);
   ~SDL_Window();
+  void run();
 };
 
 #endif /* SDLWINDOW_H_ */
