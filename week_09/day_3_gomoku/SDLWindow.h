@@ -7,12 +7,17 @@ class SDL_Window {
 private:
   SDL_Window *window;
   SDL_Renderer* renderer;
+  SDL_Surface * image;
+  SDL_Texture * texture;
   SDL_Event event;
 public:
   SDL_Window(int, int);
-  ~SDL_Window();
+
   void run();
   void draw_background();
+  void draw_image();
+
+  ~SDL_Window();
 };
 
 #endif /* SDLWINDOW_H_ */
