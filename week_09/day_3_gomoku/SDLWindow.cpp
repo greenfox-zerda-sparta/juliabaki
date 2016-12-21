@@ -5,6 +5,8 @@ SDL_Window::SDL_Window(int width, int height) {
   window = SDL_CreateWindow("Gomoku",
   SDL_WINDOWPOS_CENTERED,
   SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
+
+  draw_background();
   run();
 }
 
@@ -23,4 +25,11 @@ void SDL_Window::run() {
       }
     }
   }
+}
+
+void SDL_Window::draw_background() {
+  renderer = SDL_CreateRenderer(window, -1, 0);
+  SDL_SetRenderDrawColor(renderer, 230, 230, 250, 255);
+  SDL_RenderClear(renderer);
+  SDL_RenderPresent(renderer);
 }
