@@ -4,6 +4,7 @@
 
 #include "SDL2/SDL.h"
 #include <string>
+#include <vector>
 
 class Drawer {
 private:
@@ -16,6 +17,7 @@ public:
   void draw_background();
   void load_image();
   void draw_image(int position_x, int position_y, int side_x, int side_y);
+  void draw_map(std::vector<std::vector<bool>>&);
   ~Drawer();
 };
 

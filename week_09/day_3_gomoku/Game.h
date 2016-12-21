@@ -3,7 +3,6 @@
 #define GAME_H_
 
 #include "SDLWindow.h"
-#include "Map.h"
 
 class Game {
 public:

@@ -1,7 +1,7 @@
 #include "Map.h"
 
-Map::Map() {
-  map_vector = std::vector<std::vector<bool>>(19, std::vector<bool>(19));
+Map::Map(int size) {
+  map_vector = std::vector<std::vector<bool>>(size, std::vector<bool>(size));
 }
 
 Map::~Map() {}

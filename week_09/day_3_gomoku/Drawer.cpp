@@ -1,6 +1,6 @@
 #include "Drawer.h"
 
-Drawer::Drawer(std::string picture_name, SDL_Renderer* renderer){
+Drawer::Drawer(std::string picture_name, SDL_Renderer* renderer) {
   this->picture_name = picture_name;
   this->renderer = renderer;
   load_image();
@@ -23,7 +23,15 @@ void Drawer::draw_image(int position_x, int position_y, int side_x, int side_y) 
   SDL_RenderPresent(renderer);
 }
 
-Drawer::~Drawer(){
+void Drawer::draw_map(std::vector<std::vector<bool>>& vector) {
+  for (unsigned int i = 0; i < vector.size(); i++) {
+    for (unsigned int j = 0; j < vector.size(); j++) {
+      draw_image(j * 37, i * 37, 37, 37);
+    }
+  }
+}
+
+Drawer::~Drawer() {
   SDL_DestroyRenderer(renderer);
   SDL_DestroyTexture(texture);
   SDL_FreeSurface(image);

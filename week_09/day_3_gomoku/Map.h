@@ -4,10 +4,9 @@
 #include <vector>
 
 class Map {
-private:
-  std::vector<std::vector<bool>> map_vector;
 public:
-  Map();
+  std::vector<std::vector<bool>> map_vector;
+  Map(int size);
   ~Map();
 };
 
