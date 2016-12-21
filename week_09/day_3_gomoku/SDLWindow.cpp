@@ -14,6 +14,13 @@ SDL_Window::SDL_Window(int width, int height) {
 void SDL_Window::run() {
   int running = 1;
   while (running) {
+    if (event.type == SDL_MOUSEBUTTONDOWN) {
+      image = SDL_LoadBMP("boss.bmp");
+      SDL_Rect dstrect = { 72, 72, 72, 72 };
+      texture = SDL_CreateTextureFromSurface(renderer, image);
+      SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+      SDL_RenderPresent(renderer);
+    }
     if (SDL_PollEvent(&event) != 0) {
       if (event.type == SDL_QUIT) {
         running = 0;
