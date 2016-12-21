@@ -9,7 +9,7 @@ SDL_Window::SDL_Window(int width, int height) {
   running = true;
 
   renderer = SDL_CreateRenderer(window, -1, 0);
-  drawer = new Drawer("boss.bmp", renderer);
+  drawer = new Drawer("base.bmp", renderer);
 
   drawer->draw_background();
   run();
@@ -18,8 +18,8 @@ SDL_Window::SDL_Window(int width, int height) {
 void SDL_Window::mouse_event() {
   int x = event.button.x;
   int y = event.button.y;
-  if (x < 72 && y < 72) {
-    drawer->draw_image(0, 0, 72, 72);
+  if (x < 37 && y < 37) {
+    drawer->draw_image(0, 0, 37, 37);
   }
 }
 

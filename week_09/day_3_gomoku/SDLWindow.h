@@ -10,8 +10,6 @@ private:
   bool running;
   SDL_Window *window;
   SDL_Renderer* renderer;
-  //SDL_Surface * image;
-  //SDL_Texture * texture;
   SDL_Event event;
   Drawer* drawer;
 
@@ -19,11 +17,6 @@ public:
   SDL_Window(int, int);
 
   void run();
-  void draw_background();
-
-  void load_image(std::string);
-  void draw_image(std::string, int, int, int, int);
-
   void mouse_event();
 
   ~SDL_Window();

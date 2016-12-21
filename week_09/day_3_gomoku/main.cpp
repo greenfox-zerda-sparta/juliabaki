@@ -1,6 +1,6 @@
-#include "SDLWindow.h"
+#include "Game.h"
 
 int main(int argc, char *argv[]) {
-  SDL_Window sdl_window(600, 600);
+  Game my_game;
   return 0;
 }
