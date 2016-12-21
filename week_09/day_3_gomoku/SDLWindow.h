@@ -5,6 +5,7 @@
 
 class SDL_Window {
 private:
+  bool running;
   SDL_Window *window;
   SDL_Renderer* renderer;
   SDL_Surface * image;

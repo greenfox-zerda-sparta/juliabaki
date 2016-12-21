@@ -6,24 +6,31 @@ SDL_Window::SDL_Window(int width, int height) {
   SDL_WINDOWPOS_CENTERED,
   SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
 
+  running = true;
+
   draw_background();
   draw_image();
   run();
 }
 
 void SDL_Window::run() {
-  int running = 1;
   while (running) {
+
     if (event.type == SDL_MOUSEBUTTONDOWN) {
-      image = SDL_LoadBMP("boss.bmp");
-      SDL_Rect dstrect = { 72, 72, 72, 72 };
-      texture = SDL_CreateTextureFromSurface(renderer, image);
-      SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-      SDL_RenderPresent(renderer);
+      int x = event.button.x;
+      int y = event.button.y;
+      if (x < 72 && y < 72) {
+        image = SDL_LoadBMP("boss.bmp");
+        SDL_Rect dstrect = { 72, 72, 72, 72 };
+        texture = SDL_CreateTextureFromSurface(renderer, image);
+        SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+        SDL_RenderPresent(renderer);
+      }
+
     }
     if (SDL_PollEvent(&event) != 0) {
       if (event.type == SDL_QUIT) {
-        running = 0;
+        running = false;
         break;
       }
     }
@@ -39,9 +46,9 @@ void SDL_Window::draw_background() {
 
 void SDL_Window::draw_image() {
   image = SDL_LoadBMP("boss.bmp");
-  SDL_Rect dstrect = { 5, 5, 72, 72 };
+  SDL_Rect rect = { 5, 5, 72, 72 };
   texture = SDL_CreateTextureFromSurface(renderer, image);
-  SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+  SDL_RenderCopy(renderer, texture, NULL, &rect);
   SDL_RenderPresent(renderer);
 }
 
