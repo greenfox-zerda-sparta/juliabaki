@@ -7,6 +7,7 @@ private:
 public:
   Field();
   bool isEmpty();
+  void setReserved();
   ~Field();
 };
 

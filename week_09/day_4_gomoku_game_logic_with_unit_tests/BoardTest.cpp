@@ -5,7 +5,7 @@
 
 TEST_CASE("Board has an empty Field vector") {
   Board board(19, 19);
-  REQUIRE(board.fieldRows.size() == 0);
+  REQUIRE(board.fields.size() == 0);
 }
 
 TEST_CASE("Board getlogicalWidth() and getlogicalHeight() is 19"){
@@ -14,23 +14,17 @@ TEST_CASE("Board getlogicalWidth() and getlogicalHeight() is 19"){
   REQUIRE(board.getLogicalHeight() == 19);
 }
 
-TEST_CASE("Board's Field vector size = getLogicalWidth"){
-  Board board(19, 19);
-  board.fillUpFieldRows();
-  REQUIRE(board.getLogicalWidth() == board.fieldRows.size());
-}
 
-TEST_CASE("Board's Field vector one element size = getLogicalHeight"){
-  Board board(19, 19);
-  board.fillUpFieldColumns();
-  REQUIRE(board.getLogicalHeight() == board.fieldColumns.size());
+TEST_CASE("Board's Field vector size = getLogicalWidth"){
+  Board* board = new Board(19, 19);
+  board->fillUpFields();
+  REQUIRE(board->getLogicalWidth() == board->fields.size());
 }
 
 TEST_CASE("Field isEmpty in the start"){
   Board board(19, 19);
-  board.fillUpFieldRows();
-  REQUIRE(board.fieldRows[0]->isEmpty());
+  board.fillUpFields();
+  REQUIRE(board.fields[0][0]->isEmpty());
 }
-
 
 #endif

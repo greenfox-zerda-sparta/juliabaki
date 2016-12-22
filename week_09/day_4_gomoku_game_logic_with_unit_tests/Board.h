@@ -8,16 +8,14 @@ class Board {
   unsigned int logicalWidth;
   unsigned int logicalHeight;
 public:
-  std::vector<Field*> fieldRows;
-  std::vector<std::vector<Field*>> fieldColumns;
+  std::vector<std::vector<Field*>> fields;
 
   Board(int width, int height);
 
   unsigned int getLogicalWidth();
   unsigned int getLogicalHeight();
 
-  void fillUpFieldRows();
-  void fillUpFieldColumns();
+  void fillUpFields();
 
   ~Board();
 };

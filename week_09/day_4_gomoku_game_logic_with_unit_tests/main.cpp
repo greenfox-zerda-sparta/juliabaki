@@ -1,9 +1,9 @@
 #ifndef TEST
-#include <iostream>
 
+#include "Game.h"
 
 int main(){
-  std::cout << "itt vagyok";
+
   return 0;
 }
 
