@@ -1,6 +1,12 @@
 #include "Field.h"
 
-Field::Field() {}
+Field::Field() {
+  this->empty = true;
+}
+
+bool Field::isEmpty(){
+  return empty;
+}
 
 Field::~Field() {}
 

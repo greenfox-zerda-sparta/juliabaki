@@ -1,3 +1,4 @@
+#ifdef BOARDTEST
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "Board.h"
@@ -24,3 +25,12 @@ TEST_CASE("Board's Field vector one element size = getLogicalHeight"){
   board.fillUpFieldColumns();
   REQUIRE(board.getLogicalHeight() == board.fieldColumns.size());
 }
+
+TEST_CASE("Field isEmpty in the start"){
+  Board board(19, 19);
+  board.fillUpFieldRows();
+  REQUIRE(board.fieldRows[0]->isEmpty());
+}
+
+
+#endif
