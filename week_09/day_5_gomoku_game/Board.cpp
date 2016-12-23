@@ -13,6 +13,10 @@ unsigned int Board::getLogicalHeight() {
   return logicalHeight;
 }
 
+std::vector<std::vector<Field*>> Board::getFieldsVector(){
+  return fields;
+}
+
 void Board::fillUpFields() {
   fields = std::vector<std::vector<Field*>>(19, std::vector<Field*>(19));
   for (unsigned int i = 0; i < logicalWidth; i++) {

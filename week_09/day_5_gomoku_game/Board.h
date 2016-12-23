@@ -14,6 +14,7 @@ public:
 
   unsigned int getLogicalWidth();
   unsigned int getLogicalHeight();
+  std::vector<std::vector<Field*>> getFieldsVector();
 
   void fillUpFields();
 
