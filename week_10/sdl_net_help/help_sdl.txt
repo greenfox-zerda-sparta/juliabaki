@@ -1,0 +1,29 @@
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_net.h>
+
+--------------------------------------------------------
+
+Eclipse/ Project/ Properties/ C++ Build/ MinGW C++ Linker/ Libraries
+
+Libraries
+mingw32
+SDL2main
+SDL2
+SDL2_Net
+
+Libraries search path
+"C:\SDL2-2.0.5\x86_64-w64-mingw32\lib"
+"C:\SDL2-2.0.5\x86_64-w64-mingw32\bin"
+"C:\dev_lib\bin"
+
+---------------------------------------------------------
+
+Eclipse/ Project/ Properties/ C++ Build/ GCC C++ Compiler/ Includes
+
+Include paths
+"C:\progs\gcc\include"
+
+----------------------------------------------------------
+
+save SDL2.dll and SDL2_Net.dll file to the project's Debug directory
+don't forget: int argc, char *argv[]
