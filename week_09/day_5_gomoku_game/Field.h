@@ -4,6 +4,8 @@
 class Field {
 private:
   bool empty;
+  int coordinate_x;
+  int coordinate_y;
 public:
   Field();
   bool isEmpty();

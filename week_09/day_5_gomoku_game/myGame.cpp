@@ -1,4 +1,5 @@
 #include "myGame.h"
+#include <iostream>
 
 myGame::myGame(Board* board, Player* player_1, Player* player_2) {
   this->board = board;
@@ -15,6 +16,10 @@ Player* myGame::getActualPlayer() {
   return players[playerIndex];
 }
 
+std::vector<Stone*>* myGame::getStonesVector(){
+  return &stones;
+}
+
 int myGame::getActualPlayerIndex() {
   return playerIndex;
 }
@@ -28,7 +33,7 @@ void myGame::switchPlayer() {
 }
 
 void myGame::doRound(int coordinate_x, int coordinate_y) {
-  getActualPlayer()->placeStone(coordinate_x, coordinate_y);
+  stones.push_back(getActualPlayer()->placeStone(coordinate_x, coordinate_y, getActualPlayerIndex()));
   board->fields[coordinate_x][coordinate_y]->setReserved();
   switchPlayer();
 }

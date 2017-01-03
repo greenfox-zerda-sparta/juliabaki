@@ -15,9 +15,24 @@ int main(int argc, char* args[]) {
   Player* player_2 = new Player;
   myGame my_game(board, player_1, player_2);
 
-  myDrawer my_drawer(board->getFieldsVector());
-  GameEngine engine(&my_drawer, 703, 703);
-  engine.run();
+  GameContext* gameContext = new GameContext(703, 703);
+  myDrawer my_drawer(board->getFieldsVector(), my_game.getStonesVector());
+  GameEngine engine(&my_drawer, gameContext);
+
+
+  while(!my_game.isOver()){
+    if(my_drawer.getMouseCoordinte_x() > -1 && my_drawer.getMouseCoordinte_y() > -1){
+      my_game.doRound(my_drawer.getMouseCoordinte_x(), my_drawer.getMouseCoordinte_y());
+    }
+    my_drawer.render(*gameContext);
+    engine.run();
+    my_drawer.setCoordinates(*gameContext);
+  }
+
+  delete board;
+  delete player_1;
+  delete player_2;
+  delete gameContext;
 
   return 0;
 }

@@ -10,12 +10,14 @@ class myGame {
 private:
   Board* board;
   std::vector<Player*> players;
+  std::vector<Stone*> stones;
   int playerIndex;
 public:
   myGame(Board* board, Player* player_1, Player* player_2);
 
   Board* getBoard();
   Player* getActualPlayer();
+  std::vector<Stone*>* getStonesVector();
   int getActualPlayerIndex();
 
   void doRound(int coordinate_x, int coordinate_y);

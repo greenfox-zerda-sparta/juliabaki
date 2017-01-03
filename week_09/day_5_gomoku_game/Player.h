@@ -6,7 +6,7 @@
 class Player {
 public:
   Player();
-  Stone* placeStone(int coordinate_x, int coordinate_y);
+  Stone* placeStone(int coordinate_x, int coordinate_y, int type);
   ~Player();
 };
 
