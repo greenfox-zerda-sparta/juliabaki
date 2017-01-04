@@ -18,11 +18,13 @@ int main(int argc, char *argv[]) {
   const char* client_text = "";
 
    do {
+    std::cout << text << std::endl;
     std::cout << "Write something: " << std::endl;
     std::string input;
     std::cin >> input;
     client_text = input.c_str();
     SDLNet_TCP_Send(client, client_text, 100);
+    SDLNet_TCP_Recv(client, text, 100);
   } while (client_text[0] != 'q');
 
   SDLNet_TCP_Close(client);
