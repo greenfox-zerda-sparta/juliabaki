@@ -19,6 +19,7 @@ Stone* NetworkPlayer::getMove() {
     logicalPosition = humanMoveLogicalPositionProvider->pollLogicalPosition();
     if (!game->isLogicalPositionReserved(logicalPosition)) {
       isCorrectLogicalPosition = true;
+      sendLogicalPositionToServer(logicalPosition);
     }
   }
   return new Stone(stoneType, logicalPosition);
@@ -30,6 +31,14 @@ void NetworkPlayer::connectToServer() {
 
   SDLNet_ResolveHost(&ip, "127.0.0.1", 1234);
   client = SDLNet_TCP_Open(&ip);
+}
+
+void NetworkPlayer::sendLogicalPositionToServer(LogicalPosition logicalPosition){
+  std::string s1 = std::to_string(logicalPosition.x);
+  std::string s2 = std::to_string(logicalPosition.y);
+  std::string sum = s1 + " " + s2;
+  const char* client_text = sum.c_str(); ;
+  SDLNet_TCP_Send(client, client_text, 100);
 }
 
 NetworkPlayer::~NetworkPlayer() {

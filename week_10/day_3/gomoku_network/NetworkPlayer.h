@@ -10,9 +10,12 @@ class NetworkPlayer : public Player {
 private:
   HumanMoveLogicalPositionProvider* humanMoveLogicalPositionProvider;
   TCPsocket client;
+
+  void connectToServer();
+  void sendLogicalPositionToServer(LogicalPosition logicalPosition);
+
 public:
   NetworkPlayer(HumanMoveLogicalPositionProvider*, StoneType);
-  void connectToServer();
   Stone* getMove();
   virtual ~NetworkPlayer();
 };
