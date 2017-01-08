@@ -45,7 +45,7 @@ string removeNotAlphanumericCharactersFromString(string input) {
   return result;
 }
 
-bool isAlphanumeric(string input) {
+bool isStringContainsOnlyAlphanumericCharacters(string input) {
   for (unsigned int i = 0; i < input.length(); i++) {
     if (!isalnum(input[i])) {
       return false;
@@ -66,21 +66,20 @@ bool isDigit(string input) {
 int main() {
 
   map<string, int> words;
-  int value = 0;
 
   try {
     string word;
     ifstream myfile("alice_in_wonderland.txt");
     if (myfile.is_open()) {
       while (myfile >> word) {
-        if(!isAlphanumeric(word)){
+        if(!isStringContainsOnlyAlphanumericCharacters(word)){
           word = removeNotAlphanumericCharactersFromString(word);
         }
         if (!isDigit(word) && word != "") {
           for (unsigned int i = 0; i < word.length(); ++i) {
             word[i] = tolower(word[i]);
           }
-          words.insert(make_pair(word, value++));
+          words.insert(make_pair(word, words[word]++));
         }
       }
       myfile.close();
