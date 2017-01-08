@@ -1,12 +1,8 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include <vector>
-#include <iostream>
 #include <fstream>
-#include <algorithm>
 #include <iomanip>
-#include <stdio.h>
 #include <ctype.h>
 
 using namespace std;
@@ -35,13 +31,36 @@ using namespace std;
 // What is the longest word in Alice in Wonderland?
 // How many characters does it have?
 
-bool isValid(string input) {
+string removeNotAlphanumericCharactersFromString(string input) {
+  string result = "";
   for (unsigned int i = 0; i < input.length(); i++) {
-    if (!isalnum(input[i]) || isdigit(input[i])) {
+    if (isalnum(input[i])) {
+      result += input[i];
+    } else if (i != 0 && i != input.length() - 1){
+      if(isalnum(input[i + 1]) && isalnum(input[i - 1])){
+        result += input[i];
+      }
+    }
+  }
+  return result;
+}
+
+bool isAlphanumeric(string input) {
+  for (unsigned int i = 0; i < input.length(); i++) {
+    if (!isalnum(input[i])) {
       return false;
     }
   }
   return true;
+}
+
+bool isDigit(string input) {
+  for (unsigned int i = 0; i < input.length(); i++) {
+    if (isdigit(input[i])) {
+      return true;
+    }
+  }
+  return false;
 }
 
 int main() {
@@ -54,7 +73,10 @@ int main() {
     ifstream myfile("alice_in_wonderland.txt");
     if (myfile.is_open()) {
       while (myfile >> word) {
-        if (isValid(word)) {
+        if(!isAlphanumeric(word)){
+          word = removeNotAlphanumericCharactersFromString(word);
+        }
+        if (!isDigit(word) && word != "") {
           for (unsigned int i = 0; i < word.length(); ++i) {
             word[i] = tolower(word[i]);
           }
